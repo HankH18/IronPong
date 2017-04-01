@@ -4,6 +4,7 @@ import Backbone from 'backbone'
 import init from './init'
 import LoginView from './views/loginPage'
 import STORE from './store'
+import ACTIONS from './actions'
 
 //Pages imports
 import HomePage from './views/homepage.js'
@@ -33,13 +34,13 @@ const app = function() {
 	    },
 
 	    renderHomePage: function(){
-
+	    	ACTIONS.loggedInStatus()
 	    	ReactDOM.render(<HomePage />, document.querySelector('.container'))
 
 	    },
 
 	    renderLoginPage: function(){
-
+	    	ACTIONS.loggedInStatus()
 	    	ReactDOM.render(<LoginPage />, document.querySelector('.container'))
 
 	    },

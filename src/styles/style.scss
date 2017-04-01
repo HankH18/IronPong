@@ -2,10 +2,11 @@
 
 	font-family: 'Merriweather', serif;
 	box-sizing: border-box;
-	font-size: 16px;
+	font-size: 0;
 
 }
 
+$lh: 1.5rem;
 $mainFont: 'Merriweather', serif;
 $fontSizeHeading: 1.875rem;
 $fontSizeTitle: 1.5rem;
@@ -14,12 +15,32 @@ $fontSizeBody: 0.875rem;
 $colorDarkest: #233139;
 $colorBase: #727d84;
 $colorCallout: #6fbbb7;
-$colorTextOverDark: white;
+$colorOverDark: white;
+$colorOverLight: $colorDarkest;
+$colorReject: red;	
+
+html{
+
+	font-size: 16px;
+	background: $colorDarkest;
+
+}
+
+button {
+
+		font-size: $fontSizeSubtitle;
+		background: $colorCallout;
+		border: .2rem solid $colorOverDark;
+		border-radius: .1rem;
+		color: white;
+
+	}
 
 h2 {
 
 	font-size: $fontSizeHeading;
 	font-family: $mainFont;
+	line-height: $lh * 2
 
 }
 
@@ -27,6 +48,7 @@ h3 {
 	
 	font-size: $fontSizeTitle;
 	font-family: $mainFont;
+	line-height: $lh * 2
 
 }
 
@@ -35,6 +57,7 @@ h4 {
 	font-size: $fontSizeSubtitle;
 	font-family: $mainFont;
 	font-style: italic;
+	line-height: $lh * 2
 
 }
 
@@ -42,46 +65,343 @@ p {
 	
 	font-size: $fontSizeBody;
 	font-family: $mainFont;
+	line-height: $lh * 1.2
 
 }
 
-.home-page-wrapper{		
+@media (min-width: 700px) { 
 
-	background: $colorBase;
 
-	}
+	.header-wrapper{
 
-.login-page-wrapper{
+		background: $colorCallout;
 
-	background: $colorBase;
+		img {
 
-	}
+			max-width: 100%;
+			width: 16rem;
+			text-align: center;
+			vertical-align: center;
+			margin: auto;
+			padding: .8rem;
 
-.profile-page-wrapper{
-
-	background: $colorBase;
-
-	}
-
-.queue-page-wrapper{
-
-	background: $colorBase;
+		}
 
 	}
 
-.leaderboard-page-wrapper{
+	.nav-bar-wrapper{
 
-	background: $colorBase;
+		background: $colorDarkest;
+		
+		padding: .8rem;
 
+		a{	
+			text-decoration:none;
+			text-underline-position: none;
+			font-size: $fontSizeBody;
+			font-style: italic;
+			color: $colorOverDark;
+			margin: .5rem;
+		}
 	}
 
-.create-game-page-wrapper{
+	.home-page-wrapper{		
 
-	background: $colorBase;
+		background: $colorBase;
+		padding: 0;
+		margin: 0;
 
-	}
+		}
 
-.emailRejection {
-	color: darkred;
-	font-style: italic;
+	.login-page-wrapper{
+
+		.register-login-wrapper{
+
+			text-align: center;
+
+			.form-wrapper{
+
+				display: inline-block;
+				width: 40%;
+				vertical-align: top;
+
+				margin-top: .5rem;
+				margin-bottom: .5rem;
+				margin-left: .25rem;
+				margin-right: .25rem;
+
+				h3{
+					color: $colorOverDark;
+					line-height: $lh;
+				}
+
+				form{
+					height: 50vh;
+					display: block;
+					padding: .6rem;
+					background: $colorDarkest;
+					vertical-align: center;
+					margin: auto;
+					
+					text-align: center;
+
+				}
+
+				input{
+
+					width: 90%;
+					padding: .5rem;
+					margin-top: .5rem;
+					margin-bottom: .5rem;
+					margin-left: auto;
+					margin-right: auto;
+					vertical-align: center;
+					display: block;
+					font-size: $fontSizeBody;
+
+				}
+
+				span{
+
+					color: $colorReject;
+					display: block;
+					font-size: 1rem;
+					margin: .5rem;
+					padding:.5rem;
+
+				}
+
+		}
+
+		}
+
+		background: $colorBase;
+
+		}
+
+	.profile-page-wrapper{
+
+		background: $colorBase;
+
+		}
+
+	.queue-page-wrapper{
+
+		background: $colorBase;
+
+		}
+
+	.leaderboard-page-wrapper{
+
+		background: $colorBase;
+
+		}
+
+	.create-game-page-wrapper{
+
+		background: $colorBase;
+
+		}
+
 }
+
+@media (max-width: 699px){
+
+
+
+	.header-wrapper{
+
+		background: $colorCallout;
+
+		img {
+			max-width: 100%;
+			width: 16rem;
+			text-align: center;
+			vertical-align: center;
+			margin: auto;
+			padding: .8rem;
+		}
+	}
+
+	.nav-bar-wrapper{
+
+		background: $colorDarkest;
+		
+		padding: .8rem;
+
+		a{	
+			text-decoration:none;
+			text-underline-position: none;
+			font-size: $fontSizeBody;
+			font-style: italic;
+			color: $colorOverDark;
+			margin: .5rem;
+		}
+	}
+
+	.home-page-wrapper{		
+
+		background: $colorBase;
+		padding: 0;
+		margin: 0;
+
+		}
+
+	.login-page-wrapper{
+
+		.form-wrapper{
+
+			h3{
+				color: $colorOverDark;
+				line-height: $lh;
+			}
+
+			margin-top: .5rem;
+			margin-bottom: .5rem;
+			margin-left: auto;
+			margin-right: auto;
+
+			form{
+
+				display: block;
+				padding: .6rem;
+				background: $colorDarkest;
+				vertical-align: center;
+				margin: auto;
+				width: 80vw;
+				text-align: center;
+
+			}
+
+			input{
+
+				width: 90%;
+				padding: .5rem;
+				margin-top: .5rem;
+				margin-bottom: .5rem;
+				margin-left: auto;
+				margin-right: auto;
+				vertical-align: center;
+				display: block;
+				font-size: $fontSizeBody;
+
+			}
+
+			.emailRejection {
+
+				font-size: $fontSizeBody;
+				color: darkred;
+				font-style: italic;
+
+			}
+
+		}
+
+		background: $colorBase;
+
+		}
+
+	.profile-page-wrapper{
+
+		background: $colorBase;
+
+		.profile-stats-wrapper{
+
+			border-radius: 12px;
+				padding: .2rem;
+				margin: .8rem;
+				
+				h3{	
+					border-radius: 12px;
+					color: white;
+					margin: .2rem;
+					padding-left: .5rem;
+					padding-top: .1rem;
+					background: $colorDarkest;
+				}
+
+				h4{	
+					border-radius: 12px;
+					color: white;
+					margin: .2rem;
+					padding-left: .5rem;
+					padding-top: .1rem;
+					background: $colorDarkest;
+				}
+
+				background: none;
+				border: .2rem solid $colorBase;
+			
+
+		}
+
+		.recent-games-wrapper{
+
+			h2{
+				margin-top: 0;
+				padding-top: 0;
+				color: white;
+				padding-bottom: 0;
+			}
+
+			.game-snapshot-wrapper{
+
+				border-radius: 12px;
+				padding: .2rem;
+				margin: .8rem;
+				
+				h3{	
+					border-radius: 12px;
+					color: white;
+					margin: .2rem;
+					padding-left: .5rem;
+					padding-top: .1rem;
+					background: $colorBase;
+				}
+
+				h4{	
+					border-radius: 12px;
+					color: white;
+					margin: .2rem;
+					padding-left: .5rem;
+					padding-top: .1rem;
+					background: $colorBase;
+				}
+
+				background: none;
+				border: .2rem solid $colorBase;
+			}
+
+			padding: 1rem;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 1rem;
+			margin-bottom: 1rem;
+			width: 80vw;
+			background: $colorDarkest;
+
+		}
+
+		}
+
+	.queue-page-wrapper{
+
+		background: $colorBase;
+
+		}
+
+	.leaderboard-page-wrapper{
+
+		background: $colorBase;
+
+		}
+
+	.create-game-page-wrapper{
+
+		background: $colorBase;
+
+		}
+
+	}
+

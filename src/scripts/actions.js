@@ -1,10 +1,11 @@
 import React from 'react'
 import User from './models/userModel.js'
-import STORE from './store'
+import STORE from './store.js'
+
 const ACTIONS = {
 
 	registerUser: function(formData) {
-			if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)) {
+		if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)) {
 		User.register(formData)
 			.done(
 				function(response) {
@@ -17,8 +18,10 @@ const ACTIONS = {
 					console.log('register fail', error)
 				}
 				)
-		} else {
-			document.querySelector('.registerEmailRejection').innerHTML = ' Invalid email address'
+		} 
+		else {
+			console.log('bad email')
+			document.querySelector('.registerEmailRejection').innerHTML = 'Invalid email address'
 		}
 	},
 
@@ -28,6 +31,7 @@ const ACTIONS = {
 			.done(
 				function(response){
 					console.log('login success', response)
+					ACTIONS.loggedInStatus()
 					location.hash = 'home'
 				}
 				)
@@ -46,12 +50,32 @@ const ACTIONS = {
 			.done(
 				function(response) {
 					console.log('you logged out', response)
+					ACTIONS.loggedInStatus()
 					location.hash = 'login'
 				})
 			.fail(
 				function(error) {
 					console.log('problem logging out', error)
 				})
+	},
+
+	loggedInStatus: function(){
+		console.log(User.getCurrentUser())
+		if(User.getCurrentUser() != null){
+
+			STORE.set({userLoginStatus: 'Log Out'})
+			console.log(STORE.data.userLoginStatus)
+
+			return 'Log Out'
+		}
+
+		else{
+
+			STORE.set({userLoginStatus: 'Log In'})
+			console.log(STORE.data.userLoginStatus)
+
+			return 'Log In'
+		}
 	},
 
 	fetchUsers: function() {
@@ -65,5 +89,7 @@ const ACTIONS = {
 	}
 
 }
+
+ACTIONS.loggedInStatus()
 
 export default ACTIONS
