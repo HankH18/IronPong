@@ -8,34 +8,9 @@ var ProfilePage = React.createClass({
 
 	componentWillMount: function(){
 
-		//fetch the user info collection
-		//this.setState(STORE.data)
-
-		//dumby data:
-		this.setState(
-
-		{
-			'name': 'james',
-			'spread': 3,
-			'wins': 5,
-			'losses': 2,
-			'recentGames': [{
-
-						'date': '1-2-18',
-						'winningScore': '21',
-						'losingScore': '4',
-						'winner': 'kenji',
-						'loser': 'james'
-
-					},
-					{	
-						'date': '2-20-20',
-						'winningScore': '21',
-						'losingScore': '20',
-						'winner': 'james',
-						'loser': 'sean'
-					}]
-
+		ACTIONS.fetchGames()
+		STORE.on('dataUpdated', () => {
+			this.setState(STORE.data)
 		})
 
 	},
@@ -46,7 +21,31 @@ var ProfilePage = React.createClass({
 
 	},
 
+	createRecentGames: function(singleGame) {
+		return(
+			<div className = 'game-snapshot-wrapper'>
+				<h3>{singleGame.attributes.date}</h3>
+				<h4>winning score: &nbsp; {singleGame.attributes.winner} &nbsp; {singleGame.attributes.winningScore}</h4>
+				<h4>losing score: &nbsp; {singleGame.attributes.loser} &nbsp; {singleGame.attributes.losingScore}</h4>
+				<h4>spread: &nbsp; {singleGame.attributes.winningScore-singleGame.attributes.losingScore}</h4>
+			</div>
+		)
+	},
+
 	render: function(){
+
+		var totalGamesArray = this.state.items.models
+
+		var currentUserId = this.props.currentUserId
+
+		var recentGamesArray = []
+
+		for (i = 0; i < totalGamesArray.length; i ++) {
+			if (totalGamesArray[i].attributes.playerOne === currentUserId ||
+				totalGamesArray[i].attributes.playerTwo === currentUserId) {
+				recentGamesArray.push(totalGamesArray[i])
+			}
+		}
 
 		return(
 
@@ -58,7 +57,7 @@ var ProfilePage = React.createClass({
 
 				<StatsComponent stats = {this.state}/>
 
-				<RecentGamesComponent recentGames = {this.state.recentGames}/>	
+				<RecentGamesComponent recentGames={recentGamesArray} makeItem={this.createRecentGames}/>	
 
 			</div>
 
@@ -83,31 +82,13 @@ var AvatarComponent = React.createClass({
 
 var RecentGamesComponent = React.createClass({
 
-	_makeRecentGames: function(recentGames){
-
-		var recentGamesArray = []
-
-		for(var i = 0; i < recentGames.length; i++){
-
-			recentGamesArray.push(<SingleGameComponent recentGames={recentGames[i]}/>)
-
-		}
-
-		return (
-
-			recentGamesArray
-
-		)
-
-	},
-
 	render: function(){
 
 		return (
 
 			<div className = 'recent-games-wrapper'>
 				<h2>Recent Games</h2>
-				{this._makeRecentGames(this.props.recentGames)}
+				{recentGames.map(this.props.makeItem)}
 
 			</div>
 
@@ -117,28 +98,6 @@ var RecentGamesComponent = React.createClass({
 
 })
 
-var SingleGameComponent = React.createClass({
-
-	render: function(){
-
-		var spread = this.props.recentGames.winningScore - this.props.recentGames.losingScore
-
-		return(
-
-			<div className = 'game-snapshot-wrapper'>
-
-				<h3>{this.props.recentGames.date}</h3>
-				<h4>winning score: &nbsp; {this.props.recentGames.winner} &nbsp; {this.props.recentGames.winningScore}</h4>
-				<h4>losing score: &nbsp; {this.props.recentGames.loser} &nbsp; {this.props.recentGames.losingScore}</h4>
-				<h4>spread: &nbsp; {spread}</h4>
-
-			</div>
-
-		)
-
-	}
-
-})
 
 var StatsComponent = React.createClass({
 
