@@ -102,6 +102,17 @@ const ACTIONS = {
 			})
 	},
 
+	fetchGames: function() {
+		var gameColl = STORE.get('items')
+		gameColl.fetch()
+
+			.then(function() {
+				STORE.set({
+					items: gameColl
+				})
+			})
+	},
+
 	addUserToQueue: function() {
 		let userId = User.getCurrentUser().get('_id')
 		$.ajax({
