@@ -132,6 +132,8 @@ button:hover, a:hover {
 
 			text-align: center;
 
+		}
+
 			.form-wrapper{
 
 				display: inline-block;
@@ -199,6 +201,10 @@ button:hover, a:hover {
 		}
 
 	.queue-page-wrapper{
+
+		th,td{
+			font-size: $fontSizeBody;
+		}
 
 		background: $colorBase;
 

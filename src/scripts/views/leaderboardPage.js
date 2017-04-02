@@ -2,6 +2,7 @@ import React from 'react'
 import ACTIONS from '../actions.js'
 import STORE from '../store.js'
 import NavBar from './components/navBar'
+import Header from './components/header'
 
 var LeaderboardPage = React.createClass({
 	componentWillMount: function() {
@@ -19,6 +20,7 @@ var LeaderboardPage = React.createClass({
 	render: function(){
 		return(
 			<div className = 'leaderboard-page-wrapper'>
+				<Header />
 				<NavBar />
 				<LeaderboardDisplay userColl={this.state.userCollection} />
 			</div>
@@ -30,6 +32,7 @@ var LeaderboardPage = React.createClass({
 
 var LeaderboardDisplay = React.createClass({
 	render: function() {
+
 		var users = this.props.userColl.models
 
 		users = users.sort( function(a, b) {
@@ -63,6 +66,7 @@ var LeaderboardDisplay = React.createClass({
 
 			</div>
 		)
+
 	}
 })
 

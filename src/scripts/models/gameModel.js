@@ -12,3 +12,12 @@ export const GameCollection = Backbone.Collection.extend({
 	model: GameModel,
 	url: 'api/games'
 })
+
+export const QueueCollection = Backbone.Collection.extend({
+	idAttribute: '_id',
+	url:'/api/queue',
+	parse: function(apiResponse){
+		console.log(apiResponse)
+		return apiResponse[0].queueMembers
+	}
+})

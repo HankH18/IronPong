@@ -56,7 +56,7 @@ var RegisterForm = React.createClass({
 		evtObj.preventDefault()
 		var formEl = evtObj.target
 		var formData = {
-			name: formEl.userName.value,
+			nickName: formEl.userName.value,
 			email: formEl.email.value,
 			password: formEl.password.value
 		}

@@ -1,6 +1,7 @@
 import Backbone from 'backbone'
 import {GameCollection} from './models/gameModel'
 import {UserCollection} from './models/userModel'
+import {QueueCollection} from './models/gameModel'
 
 
 
@@ -10,6 +11,7 @@ const STORE = Object.assign({}, Backbone.Events, {
 
 		items: new GameCollection,
 		userCollection: new UserCollection,
+		queueCollection: new QueueCollection,
 		userLoginStatus: 'Log In'
 
 	},

@@ -2,6 +2,7 @@ import React from 'react'
 import ACTIONS from '../actions.js'
 import STORE from '../store.js'
 import NavBar from './components/navBar'
+import Header from './components/header'
 
 var HomePage = React.createClass({
 
@@ -10,7 +11,7 @@ var HomePage = React.createClass({
 		return(
 
 			<div className = 'home-page-wrapper'>
-
+				<Header />
 				<NavBar />
 				<h2>this is a title</h2>
 				<h3>this is a subtitle</h3>

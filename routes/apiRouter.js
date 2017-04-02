@@ -58,16 +58,36 @@ apiRouter.post('/games', function(req, res) {
 
     Queue.find((err,queueRecords) => {
       if (err) return res.status(500).json(`Problem getting the queue from database`)
-
       let ironQueue = queueRecords[0],
       userIndex     = ironQueue.queueMembers.indexOf(req.body.loser)
       ironQueue.queueMembers.splice(userIndex,1)
-      
       ironQueue.save((err, record) => {
         if(err) return res.status(500).json(`Problem deleting user from database`)
       })
     })
-   res.json(gameRecord)
+
+    User.findById(req.body.winner, (err, winnerRecord) => {
+      if (err) return res.status(500).json(`Problem getting the winner from database`)
+      winnerRecord.wins = ++winnerRecord.wins
+      winnerRecord.winStreak = ++winnerRecord.winStreak,
+      winnerRecord.totalGames = ++winnerRecord.totalGames
+      winnerRecord.winRatio =  (winnerRecord.wins / winnerRecord.totalGames) * 100
+      winnerRecord.save((err) => {
+        if (err) return res.status(500).json(`Problem saving updated winner to database`)
+      })
+    })
+
+    User.findById(req.body.loser, (err, loserRecord) => {
+      if (err) return res.status(500).json(`Problem getting the winner from database`)
+      loserRecord.losses = ++ loserRecord.losses
+      loserRecord.winStreak = 0,
+      loserRecord.totalGames = ++loserRecord.totalGames
+      loserRecord.winRatio =  (loserRecord.wins / loserRecord.totalGames) * 100
+      loserRecord.save((err) => {
+        if (err) return res.status(500).json(`Problem saving updated winner to database`)
+      })
+    })
+     res.json(gameRecord)
   })
 })
 
