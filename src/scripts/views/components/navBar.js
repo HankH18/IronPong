@@ -38,6 +38,7 @@ var NavBar = React.createClass({
 				<a href="/#queue">Queue</a>
 				<a href="/#leaderboard">Leaderboard</a>
 				<a href="/#profile/:id">Profile</a>
+				<a href="/#rules">Rules</a>
 				<a onClick={this.handleLogout}>{this.state.userLoginStatus}</a>
 				
 

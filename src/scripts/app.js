@@ -15,6 +15,7 @@ import CreateGamePage from './views/createGamePage.js'
 import LeaderboardPage from './views/leaderboardPage.js'
 import ReclaimPage from './views/reclaimPage.js'
 import QueuePage from './views/queuePage.js'
+import RulesPage from './views/faqPage.js'
 
 
 const app = function() {
@@ -28,6 +29,7 @@ const app = function() {
 	    	'create_game': 'renderCreateGamePage',
 	    	'reclaim': 'renderReclaimPage',
 	    	'queue': 'renderQueuePage',
+	    	'rules': 'renderRulesPage',
 	    	'*default': 'handleRedirect',
 
 	    },
@@ -50,7 +52,7 @@ const app = function() {
 
 	    },
 
-	    renderProfilePage: function(){
+	    renderProfilePage: function(ID){
 
     		ReactDOM.render(<ProfilePage currentUserId={User.getCurrentUser().id} />, document.querySelector('.container'))
 
@@ -77,6 +79,11 @@ const app = function() {
 
     		ReactDOM.render(<QueuePage />, document.querySelector('.container'))
 
+    	},
+
+    	renderRulesPage: function() {
+
+    		ReactDOM.render(<RulesPage />, document.querySelector('.container'))
     	}
 
   	})
