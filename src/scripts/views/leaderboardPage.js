@@ -22,7 +22,7 @@ var LeaderboardPage = React.createClass({
 			<div className = 'leaderboard-page-wrapper'>
 				<Header />
 				<NavBar />
-				<LeaderboardDisplay userColl={this.state.userCollection} />
+				<LeaderboardDisplay userColl={this.state.userCollection.where({claimed:true})} />
 			</div>
 		)
 
