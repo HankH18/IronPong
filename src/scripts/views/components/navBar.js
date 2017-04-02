@@ -32,6 +32,7 @@ var NavBar = React.createClass({
 		console.log(this.state.userLoginStatus)
 		var userId = User.getCurrentUser()
 		console.log('userid', userId)
+		let gamePage = (User.getCurrentUser()) ? <a href="/#create_game">Create New Game</a> : null
 		return(
 
 			<div className='nav-bar-wrapper'>
@@ -40,6 +41,7 @@ var NavBar = React.createClass({
 				<a href="/#queue">Queue</a>
 				<a href="/#leaderboard">Leaderboard</a>
 				<a href="/#profile/:id">Profile</a>
+				{gamePage}
 				<a onClick={this.handleLogout}>{this.state.userLoginStatus}</a>
 				
 
