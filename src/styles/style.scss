@@ -284,11 +284,11 @@ button:hover, a:hover {
 
 	.register-login-wrapper{
 		text-align: center;
-	}
+		}
 
 	.reclaim-button{
 		display: block;
-	}
+		}
 
 	.header-wrapper{
 
@@ -452,6 +452,8 @@ button:hover, a:hover {
 			
 		}
 
+		
+
 		.recent-games-wrapper{
 
 			h2{
@@ -503,7 +505,7 @@ button:hover, a:hover {
 
 		}
 
-		}
+	}
 
 	.queue-page-wrapper{
 
@@ -521,15 +523,11 @@ button:hover, a:hover {
 
 		background: $colorBase;
 
-		}
 	}
 
-	/*------------------------
-	Home Page View
-	-------------------------*/
 	#home-page-columns {
 		position: relative;
-	}
+		}
 
 	#button-col {
 		display: inline-block;
@@ -552,7 +550,7 @@ button:hover, a:hover {
 
 	#home-button:hover {
 		background-color: $colorDarkest;
-	}
+		}
 
 	#queue-col {
 		position: absolute;
@@ -570,6 +568,6 @@ button:hover, a:hover {
 			border-bottom: 2px solid $colorDarkest;
 		}
 	}
-
+}
 
 

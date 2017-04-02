@@ -7,6 +7,7 @@ var NavBar = React.createClass({
 
 	componentWillMount: function(){
 
+		ACTIONS.getUserId()
 		STORE.on('dataUpdated', () => {
 
 			this.setState(STORE.data)
@@ -30,7 +31,7 @@ var NavBar = React.createClass({
 
 	render: function() {
 		//<a href="/#profile/:id">Profile</a>
-
+		console.log(STORE.data.currentUserId)
 		return(
 
 			<div className='nav-bar-wrapper'>

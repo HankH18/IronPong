@@ -2,14 +2,14 @@ import Backbone from 'backbone'
 import $ from 'jquery'
 import {app_name} from '../app'
 
-// var logoutUrl = 'https://iron-pong.herokuapp.com/auth/logout'
-// var usersUrl = 'https://iron-pong.herokuapp.com/api/users'
-// var registerUrl = 'https://iron-pong.herokuapp.com/auth/register'
-// var loginUrl = 'https://iron-pong.herokuapp.com/auth/login'
-var logoutUrl = '/auth/logout'
-var usersUrl = '/api/users'
-var registerUrl = '/auth/register'
-var loginUrl = '/auth/login'
+var logoutUrl = 'https://iron-pong.herokuapp.com/auth/logout'
+var usersUrl = 'https://iron-pong.herokuapp.com/api/users'
+var registerUrl = 'https://iron-pong.herokuapp.com/auth/register'
+var loginUrl = 'https://iron-pong.herokuapp.com/auth/login'
+// var logoutUrl = '/auth/logout'
+// var usersUrl = '/api/users'
+// var registerUrl = '/auth/register'
+// var loginUrl = '/auth/login'
 
 // ..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
 const UserAuthModel = Backbone.Model.extend({

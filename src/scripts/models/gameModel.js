@@ -1,7 +1,7 @@
 import Backbone from 'backbone'
 
-//var theUrl = 'https://iron-pong.herokuapp.com/api/games'
-var theUrl = '/api/games'
+var theUrl = 'https://iron-pong.herokuapp.com/api/games'
+//var theUrl = '/api/games'
 
 export const GameModel = Backbone.Model.extend({
 	urlRoot: theUrl,

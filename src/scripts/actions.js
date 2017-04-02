@@ -79,6 +79,7 @@ const ACTIONS = {
 
 			return 'Log In'
 		}
+		this.getUserId()
 	},
 
 	fetchUsers: function(id) {
@@ -89,8 +90,19 @@ const ACTIONS = {
 
 				STORE.set({
 					userCollection: userColl
-				})	
+				})
+	
 			})
+	},
+
+	getUserId: function(){
+
+		if(User.getCurrentUser()){
+			var id = User.getCurrentUser().attributes._id
+			console.log(id)
+			STORE.set({'currentUserId': id})
+		}
+
 	},
 
 	fetchQueue: function(){
