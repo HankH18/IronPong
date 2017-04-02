@@ -128,6 +128,8 @@ button:hover, a:hover {
 
 	.login-page-wrapper{
 
+		background: $colorBase;
+
 		.register-login-wrapper{
 
 			text-align: center;
@@ -384,128 +386,118 @@ button:hover, a:hover {
 
 	.profile-page-wrapper{
 
-		background: $colorBase;
+		.user-info-wrapper{
 
-		.avatar-wrapper{
+			background: $colorBase;
+			width: 90vw;
+			margin: auto;
+			.avatar-wrapper{
 
-			background: $colorDarkest;
-			width: 100vw;
+				background: $colorDarkest;
 
-			h3{
+				h3{
 
-				padding: .5rem;
-				font-size: $fontSizeTitle;
-				color: white;
-				margin: 0;
+					padding: .5rem;
+					font-size: $fontSizeTitle;
+					color: white;
+					margin: 0;
 
-			}
+				}
 
-			.avatar-img{
-			
-				width: 150px;
-				height: 150px;
-				padding: .8rem;
-				margin: auto;
-				text-align: left;
-				vertical-align: left;
-				margin-top: 0;
-
-				img{
-
-					width: 256px;
-					max-width: 100%;
-
-				}			
-
-			}
-
-		}
-
-		.profile-stats-wrapper{
-
-			border-radius: 12px;
-				padding: .2rem;
-				margin: .8rem;
+				.avatar-img{
 				
-				h3{	
+					width: 150px;
+					height: 150px;
+					padding: .8rem;
+					margin: auto;
+					text-align: left;
+					vertical-align: left;
+					margin-top: 0;
 
-					border-radius: 12px;
-					color: white;
-					margin: .2rem;
-					padding-left: .5rem;
-					padding-top: .1rem;
-					background: $colorDarkest;
+					img{
+
+						width: 256px;
+						max-width: 100%;
+
+					}			
 
 				}
-
-				h4{	
-					border-radius: 12px;
-					color: white;
-					margin: .2rem;
-					padding-left: .5rem;
-					padding-top: .1rem;
-					background: $colorDarkest;
-				}
-
-				background: none;
-				border: .2rem solid $colorBase;
-			
-		}
-
-		
-
-		.recent-games-wrapper{
-
-			h2{
-
-				margin-top: 0;
-				padding-top: 0;
-				color: white;
-				padding-bottom: 0;
 
 			}
 
-			.game-snapshot-wrapper{
+			.profile-stats-wrapper{
+					
+					border-radius: 12px;
+					padding: .2rem;
+					margin: .5rem;
+					
+					h3{	
+						padding-left: .5rem;
+						border-radius: 12px;
+						color: white;
+						margin: .2rem;
+						background: $colorDarkest;
 
-				border-radius: 12px;
-				padding: .2rem;
-				margin: .8rem;
+					}
 				
-				h3{	
-					border-radius: 12px;
+			}
+
+			
+
+			.recent-games-wrapper{
+
+				h2{
+
+					margin-top: 0;
+					padding-top: 0;
 					color: white;
-					margin: .2rem;
-					padding-left: .5rem;
-					padding-top: .1rem;
-					background: $colorBase;
+					padding-bottom: 0;
+
 				}
 
-				h4{	
+				.game-snapshot-wrapper{
+
 					border-radius: 12px;
-					color: white;
-					margin: .2rem;
-					padding-left: .5rem;
-					padding-top: .1rem;
-					background: $colorBase;
+					padding: .2rem;
+					margin: .8rem;
+					
+					h3{	
+						border-radius: 12px;
+						color: white;
+						margin: .2rem;
+						padding-left: .5rem;
+						padding-top: .1rem;
+						background: $colorBase;
+					}
+
+					h4{	
+						border-radius: 12px;
+						color: white;
+						margin: .2rem;
+						padding-left: .5rem;
+						padding-top: .1rem;
+						background: $colorBase;
+					}
+
+					background: none;
+					border: .2rem solid $colorBase;
+
 				}
 
-				background: none;
-				border: .2rem solid $colorBase;
+				padding: 1rem;
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 1rem;
+				margin-bottom: 1rem;
+				width: 80vw;
+				background: $colorDarkest;
 
 			}
 
-			padding: 1rem;
-			display: block;
-			margin-left: auto;
-			margin-right: auto;
-			margin-top: 1rem;
-			margin-bottom: 1rem;
-			width: 80vw;
-			background: $colorDarkest;
+			}
 
 		}
-
-	}
 
 	.queue-page-wrapper{
 
