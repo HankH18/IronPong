@@ -15,6 +15,10 @@ var NavBar = React.createClass({
 
 	},
 
+	componentWillUnmount: function() {
+		STORE.off('dataUpdated')
+	},
+
 	getInitialState: function(){
 
 		return STORE.data

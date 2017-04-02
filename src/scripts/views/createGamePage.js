@@ -2,43 +2,50 @@ import React from 'react'
 import ACTIONS from '../actions.js'
 import STORE from '../store.js'
 import NavBar from './components/navBar'
+import Header from './components/header'
+import User from '../models/userModel'
 
 var CreateGamePage = React.createClass({
-
+	componentWillMount: function() {
+		ACTIONS.fetchQueue()
+		STORE.on('dataUpdated', () => {
+			this.setState(STORE.data)
+		})
+	},
+	componentWillUnmount: function() {
+	STORE.off('dataUpdated')
+	},
+	getInitialState: function() {
+		return STORE.data
+	},
 	render: function(){
-		return(
-			<div className = 'create-game-page-wrapper'>
-				<NavBar />
-				<NewGame />
+		console.log(this.state)
+		if (this.state.queueCollection.models.length >= 2 && 
+			(this.state.queueCollection.models[0].get('_id') === User.getCurrentUser().get('_id') ||
+			this.state.queueCollection.models[1].get('_id') === User.getCurrentUser().get('_id'))){
+			return(
+				<div className='login-page-wrapper'>
+					<Header />
+					<NavBar />
+					<div className='register-login-wrapper'>
+						<div className='form-wrapper login-form'>
+							<form onSubmit={(ev) => ACTIONS.createNewGame(ev)}>
+								<input type='text' name='player1' disabled placeholder='Player 1'  value={this.state.queueCollection.models[0].get('nickName')}/><br/>
+								<input type='text' name='player2' disabled placeholder='Player 2'  value= {this.state.queueCollection.models[1].get('nickName')}/>	<br/>
+								<input type='text' name='player1Score' placeholder='Player 1 Score' />	<br/>
+								<input type='text' name='player2Score' placeholder='Player 2 Score' />	<br/>
+								<button type='submit'>Create game</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			)
+		}
+		else return (
+			<div className='login-page-wrapper'>
+					<Header />
+					<NavBar />
 			</div>
-		)
-
-	}
-
-})
-
-var NewGame = React.createClass({
-	render: function(){
-		return(
-			<div className='form-wrapper login-form'>
-				<h2>Create New Game</h2>
-				<form onSubmit={this._handleNewGame}>
-					<label>Player 1</label><br/>
-					<input type='text' name='player1' placeholder='Player 1' /><br/>
-					<label>Player 2</label><br/>
-					<input type='text' name='player2' placeholder='Player 2' /><br/>
-					<label>Winner</label><br/>
-					<input type='text' name='winner' placeholder='Winner' /><br />
-					<label>Loser</label>
-					<input type='text' name='loser' placeholder='Loser' /><br />
-					<label>Player 1 Score</label>
-					<input type='text' name='player1Score' placeholder='Player 1 Score' /><br />
-					<label>Player 2 Score</label>
-					<input type='text' name='player2Score' placeholder='Player 2 Score' /><br />
-					<button type='submit'>Create game</button>
-				</form>
-			</div>
-
 		)
 	}
 
