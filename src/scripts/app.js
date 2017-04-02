@@ -5,6 +5,7 @@ import init from './init'
 import LoginView from './views/loginPage'
 import STORE from './store'
 import ACTIONS from './actions'
+import User from './models/userModel'
 
 //Pages imports
 import HomePage from './views/homepage.js'
@@ -49,9 +50,9 @@ const app = function() {
 
 	    },
 
-	    renderProfilePage: function(id){
+	    renderProfilePage: function(){
 
-    		ReactDOM.render(<ProfilePage currentUserId={id} />, document.querySelector('.container'))
+    		ReactDOM.render(<ProfilePage currentUserId={User.getCurrentUser().id} />, document.querySelector('.container'))
 
     	},
 

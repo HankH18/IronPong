@@ -22,12 +22,13 @@ var ProfilePage = React.createClass({
 	},
 
 	createRecentGames: function(singleGame) {
+		var attributes = singleGame.attributes
 		return(
 			<div className = 'game-snapshot-wrapper'>
-				<h3>{singleGame.attributes.date}</h3>
-				<h4>winning score: &nbsp; {singleGame.attributes.winner} &nbsp; {singleGame.attributes.winningScore}</h4>
-				<h4>losing score: &nbsp; {singleGame.attributes.loser} &nbsp; {singleGame.attributes.losingScore}</h4>
-				<h4>spread: &nbsp; {singleGame.attributes.winningScore-singleGame.attributes.losingScore}</h4>
+				<h3>{attributes.createdAt}</h3>
+				<h4>winning score: &nbsp; {attributes.winner} &nbsp; {(attributes.playerOneScore>attributes.playerTwoScore)?attributes.playerOneScore:attributes.playerTwoScore}</h4>
+				<h4>losing score: &nbsp; {attributes.loser} &nbsp; {(attributes.playerOneScore>attributes.playerTwoScore)?attributes.playerTwoScore:attributes.playerOneScore}</h4>
+				<h4>spread: &nbsp; {(attributes.playerOneScore>attributes.playerTwoScore)?(attributes.playerOneScore-attributes.playerTwoScore):(attributes.playerTwoScore-attributes.playerOneScore)}</h4>
 			</div>
 		)
 	},
@@ -35,12 +36,13 @@ var ProfilePage = React.createClass({
 	render: function(){
 
 		var totalGamesArray = this.state.items.models
+		console.log(totalGamesArray)
 
 		var currentUserId = this.props.currentUserId
 
 		var recentGamesArray = []
 
-		for (i = 0; i < totalGamesArray.length; i ++) {
+		for (var i = 0; i < totalGamesArray.length; i ++) {
 			if (totalGamesArray[i].attributes.playerOne === currentUserId ||
 				totalGamesArray[i].attributes.playerTwo === currentUserId) {
 				recentGamesArray.push(totalGamesArray[i])
@@ -88,7 +90,7 @@ var RecentGamesComponent = React.createClass({
 
 			<div className = 'recent-games-wrapper'>
 				<h2>Recent Games</h2>
-				{recentGames.map(this.props.makeItem)}
+				{this.props.recentGames.map(this.props.makeItem)}
 
 			</div>
 
