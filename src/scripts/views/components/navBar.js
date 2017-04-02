@@ -28,7 +28,9 @@ var NavBar = React.createClass({
 	},
 
 	render: function() {
+
 		console.log(this.state.userLoginStatus)
+		console.log(location.hash.split('/')[1])
 		return(
 
 			<div className='nav-bar-wrapper'>
@@ -36,10 +38,9 @@ var NavBar = React.createClass({
 				<a href="/#home">Home</a>
 				<a href="/#queue">Queue</a>
 				<a href="/#leaderboard">Leaderboard</a>
-				<a href="/#profile/id">Profile</a>
+				<a href={"/#profile/" + STORE.data.currentUserId}>Profile</a>
 				<a onClick={this.handleLogout}>{this.state.userLoginStatus}</a>
 				
-
 			</div>
 
 		)

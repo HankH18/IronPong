@@ -39,9 +39,10 @@ const app = function() {
 
 	    },
 
-	    renderLoginPage: function(){
+	    renderLoginPage: function(id){
 	    	ACTIONS.loggedInStatus()
-	    	ReactDOM.render(<LoginPage />, document.querySelector('.container'))
+	    	console.log(id)
+	    	ReactDOM.render(<LoginPage userId = {id}/>, document.querySelector('.container'))
 
 	    },
 

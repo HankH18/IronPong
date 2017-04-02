@@ -183,7 +183,66 @@ p {
 
 		background: $colorBase;
 
+		.user-info-wrapper{
+
+			margin: .5rem;
+			width: 38vw;
+			text-align: left;
+			.avatar-wrapper{
+
+				background: $colorDarkest;
+
+				h3{
+
+					padding: .5rem;
+					font-size: $fontSizeTitle;
+					color: white;
+					margin: 0;
+
+				}
+
+				.avatar-img{
+				
+					width: 256px;
+					height: 256px;
+					padding: .8rem;
+					margin: .2rem;
+					text-align: left;
+					vertical-align: left;
+					margin-top: 0;
+
+					img{
+
+						width: 512px;
+						max-width: 100%;
+
+					}			
+
+				}
+
+			}
+
+			.profile-stats-wrapper{
+
+				border-radius: 12px;
+				padding: .2rem;
+				margin: .5rem;
+					
+					h3{	
+						padding-left: .5rem;
+						border-radius: 12px;
+						color: white;
+						margin: .2rem;
+						background: $colorDarkest;
+
+					}
+
+					background: none;
+				
+			}
 		}
+
+	}
 
 	.queue-page-wrapper{
 
@@ -206,8 +265,6 @@ p {
 }
 
 @media (max-width: 699px){
-
-
 
 	.header-wrapper{
 
@@ -305,6 +362,41 @@ p {
 
 		background: $colorBase;
 
+		.avatar-wrapper{
+
+			background: $colorDarkest;
+			width: 100vw;
+
+			h3{
+
+				padding: .5rem;
+				font-size: $fontSizeTitle;
+				color: white;
+				margin: 0;
+
+			}
+
+			.avatar-img{
+			
+				width: 150px;
+				height: 150px;
+				padding: .8rem;
+				margin: auto;
+				text-align: left;
+				vertical-align: left;
+				margin-top: 0;
+
+				img{
+
+					width: 256px;
+					max-width: 100%;
+
+				}			
+
+			}
+
+		}
+
 		.profile-stats-wrapper{
 
 			border-radius: 12px;
@@ -312,12 +404,14 @@ p {
 				margin: .8rem;
 				
 				h3{	
+
 					border-radius: 12px;
 					color: white;
 					margin: .2rem;
 					padding-left: .5rem;
 					padding-top: .1rem;
 					background: $colorDarkest;
+
 				}
 
 				h4{	
@@ -332,16 +426,17 @@ p {
 				background: none;
 				border: .2rem solid $colorBase;
 			
-
 		}
 
 		.recent-games-wrapper{
 
 			h2{
+
 				margin-top: 0;
 				padding-top: 0;
 				color: white;
 				padding-bottom: 0;
+
 			}
 
 			.game-snapshot-wrapper{
@@ -370,6 +465,7 @@ p {
 
 				background: none;
 				border: .2rem solid $colorBase;
+
 			}
 
 			padding: 1rem;

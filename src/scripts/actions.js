@@ -32,6 +32,7 @@ const ACTIONS = {
 				function(response){
 					console.log('login success', response)
 					ACTIONS.loggedInStatus()
+					ACTIONS.getUserId()
 					location.hash = 'home'
 				}
 				)
@@ -60,6 +61,7 @@ const ACTIONS = {
 	},
 
 	loggedInStatus: function(){
+
 		console.log(User.getCurrentUser())
 		if(User.getCurrentUser() != null){
 
@@ -78,16 +80,67 @@ const ACTIONS = {
 		}
 	},
 
-	fetchUsers: function() {
+	fetchUsers: function(id) {
+
 		var userColl = STORE.get('userCollection')
 		userColl.fetch()
 			.then(function() {
+
 				STORE.set({
 					userCollection: userColl
 				})
-			})
-	}
 
+				// if(id){
+				// 	for(var i = 0; i < userColl.models.length; i++){
+
+				// 		if(userColl.models[i].attributes._id === id){
+				// 			console.log('found a match')
+				// 			STORE.set({
+
+				// 				selectedUser: userColl.models[i].attributes
+
+				// 			})
+				// 			console.log(STORE.data.selectedUser)
+				// 			return(userColl.models[i].attributes)
+				// 		}
+				// 	}
+				// }	
+			})
+	},
+
+	getUserId: function(){
+
+		var id = User.getCurrentUser().attributes._id
+		STORE.set({'currentUserId': id})
+
+	},
+
+	returnUserById: function(id){
+		var theUserId = id
+		var usersCollection = STORE.get('userCollection')
+
+		usersCollection.fetch()
+
+			.then(function() {
+
+				console.log(usersCollection.models)
+
+				for(var i = 0; i < usersCollection.models.length; i++){
+
+					if(usersCollection.models[i].attributes._id === id){
+						console.log('found a match')
+						STORE.set({
+
+							selectedUser: usersCollection.models[i].attributes
+
+						})
+						console.log(STORE.data.selectedUser)
+						return(usersCollection.models[i].attributes)
+					}
+				}
+			})
+
+	}
 }
 
 ACTIONS.loggedInStatus()

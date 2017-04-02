@@ -8,57 +8,60 @@ var ProfilePage = React.createClass({
 
 	componentWillMount: function(){
 
-		//fetch the user info collection
-		//this.setState(STORE.data)
+		ACTIONS.fetchUsers()
 
-		//dumby data:
-		this.setState(
-
-		{
-			'name': 'james',
-			'spread': 3,
-			'wins': 5,
-			'losses': 2,
-			'recentGames': [{
-
-						'date': '1-2-18',
-						'winningScore': '21',
-						'losingScore': '4',
-						'winner': 'kenji',
-						'loser': 'james'
-
-					},
-					{	
-						'date': '2-20-20',
-						'winningScore': '21',
-						'losingScore': '20',
-						'winner': 'james',
-						'loser': 'sean'
-					}]
+		STORE.on('dataUpdated', () => {
+			
+			this.setState(STORE.data)
 
 		})
 
 	},
 
 	getInitialState: function(){
-
+	
 		return STORE.data
 
 	},
 
 	render: function(){
 
+		var users = this.state.userCollection.models
+
+		console.log(users)
+
+		for(var i = 0; i < users.length; i++){
+
+			var theUser = users[i].attributes
+
+			if(location.hash.split('/')[1] === theUser._id){
+
+				return(
+
+				<div className = 'profile-page-wrapper'>
+
+					<Header />
+
+					<NavBar />
+
+					<div className = 'user-info-wrapper'>
+
+						<AvatarComponent user = {theUser} />
+
+						<StatsComponent stats = {theUser} />
+
+					</div>
+
+				</div>
+
+				)
+
+			}
+		}
+		
 		return(
 
 			<div className = 'profile-page-wrapper'>
-
-				<Header />
-
-				<NavBar />
-
-				<StatsComponent stats = {this.state}/>
-
-				<RecentGamesComponent recentGames = {this.state.recentGames}/>	
 
 			</div>
 
@@ -69,75 +72,19 @@ var ProfilePage = React.createClass({
 })
 
 var AvatarComponent = React.createClass({
-	render: function(){
 
+	render: function(){
+		console.log(this.props.user)
 		return(
-
-			<div className = 'avatar-img'>
-				<img src='images/doge.png'/>
+		
+			<div className = 'avatar-wrapper'>
+				<h3>{this.props.user.nickName}</h3>
+				<div className = 'avatar-img'>
+					<img src='images/sid.png'/>
+				</div>
 			</div>
-
 		)
 	}
-})
-
-var RecentGamesComponent = React.createClass({
-
-	_makeRecentGames: function(recentGames){
-
-		var recentGamesArray = []
-
-		for(var i = 0; i < recentGames.length; i++){
-
-			recentGamesArray.push(<SingleGameComponent recentGames={recentGames[i]}/>)
-
-		}
-
-		return (
-
-			recentGamesArray
-
-		)
-
-	},
-
-	render: function(){
-
-		return (
-
-			<div className = 'recent-games-wrapper'>
-				<h2>Recent Games</h2>
-				{this._makeRecentGames(this.props.recentGames)}
-
-			</div>
-
-		)
-
-	}
-
-})
-
-var SingleGameComponent = React.createClass({
-
-	render: function(){
-
-		var spread = this.props.recentGames.winningScore - this.props.recentGames.losingScore
-
-		return(
-
-			<div className = 'game-snapshot-wrapper'>
-
-				<h3>{this.props.recentGames.date}</h3>
-				<h4>winning score: &nbsp; {this.props.recentGames.winner} &nbsp; {this.props.recentGames.winningScore}</h4>
-				<h4>losing score: &nbsp; {this.props.recentGames.loser} &nbsp; {this.props.recentGames.losingScore}</h4>
-				<h4>spread: &nbsp; {spread}</h4>
-
-			</div>
-
-		)
-
-	}
-
 })
 
 var StatsComponent = React.createClass({
@@ -148,9 +95,9 @@ var StatsComponent = React.createClass({
 
 			<div className = 'profile-stats-wrapper'>
 
-				<h3>spread: {this.props.stats.spread}</h3>
 				<h3>wins: {this.props.stats.wins}</h3>
 				<h3>losses: {this.props.stats.losses}</h3>
+				<h3>spread: {this.props.stats.winRatio}</h3>
 				
 			</div>
 
@@ -159,6 +106,5 @@ var StatsComponent = React.createClass({
 	}
 
 })
-
 
 export default ProfilePage
