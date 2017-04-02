@@ -52,6 +52,7 @@ Add additional notes about how to deploy this on a live system
 * **Sam Evers** - [sam123evers](https://github.com/sam123evers)
 * **Taylor Lang** - [TayLang](https://github.com/TayLang)
 * **Sean Wyse** - [wysesean](https://github.com/wysesean)
+* **Amanda Wolgamott** - [awolgamott](https://github.com/awolgamott)
 
 
 

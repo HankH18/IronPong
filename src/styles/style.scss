@@ -69,6 +69,19 @@ p {
 
 }
 
+.reclaim-button {
+	margin: 10px;
+	display: block;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%);
+
+}
+
+button:hover, a:hover {
+	cursor: pointer;
+}
+
 @media (min-width: 700px) { 
 
 
@@ -118,6 +131,8 @@ p {
 		.register-login-wrapper{
 
 			text-align: center;
+
+		}
 
 			.form-wrapper{
 
@@ -246,7 +261,9 @@ p {
 
 	.queue-page-wrapper{
 
-		background: $colorBase;
+		th,td{
+			font-size: $fontSizeBody;
+			background: $colorBase;
 
 		}
 
@@ -259,12 +276,19 @@ p {
 	.create-game-page-wrapper{
 
 		background: $colorBase;
-
-		}
+	}
 
 }
 
 @media (max-width: 699px){
+
+	.register-login-wrapper{
+		text-align: center;
+	}
+
+	.reclaim-button{
+		display: block;
+	}
 
 	.header-wrapper{
 
@@ -498,6 +522,54 @@ p {
 		background: $colorBase;
 
 		}
-
 	}
+
+	/*------------------------
+	Home Page View
+	-------------------------*/
+	#home-page-columns {
+		position: relative;
+	}
+
+	#button-col {
+		display: inline-block;
+		vertical-align: top;
+		margin-left: 50%;
+		transform: translate(-50%);
+
+		a {
+			text-decoration: none;
+		}
+	}
+
+	#home-button {
+		display: block;
+		width: 500px;
+		height: 50px;
+		margin: 25px;
+		box-shadow: 5px 5px 10px #000;
+	}
+
+	#home-button:hover {
+		background-color: $colorDarkest;
+	}
+
+	#queue-col {
+		position: absolute;
+		display: inline-block;
+		width: 300px;
+		vertical-align: top;
+		background-color: #fff;
+		right: 0;
+
+		h4 {
+			margin: 0;
+			text-align: center;
+			background-color: $colorCallout;
+			color: #fff;
+			border-bottom: 2px solid $colorDarkest;
+		}
+	}
+
+
 

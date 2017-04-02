@@ -1,6 +1,7 @@
 import React from 'react'
 import User from './models/userModel.js'
 import STORE from './store.js'
+import $ from 'jquery'
 
 const ACTIONS = {
 
@@ -88,57 +89,51 @@ const ACTIONS = {
 
 				STORE.set({
 					userCollection: userColl
-				})
-
-				// if(id){
-				// 	for(var i = 0; i < userColl.models.length; i++){
-
-				// 		if(userColl.models[i].attributes._id === id){
-				// 			console.log('found a match')
-				// 			STORE.set({
-
-				// 				selectedUser: userColl.models[i].attributes
-
-				// 			})
-				// 			console.log(STORE.data.selectedUser)
-				// 			return(userColl.models[i].attributes)
-				// 		}
-				// 	}
-				// }	
+				})	
 			})
 	},
 
-	getUserId: function(){
-
-		var id = User.getCurrentUser().attributes._id
-		STORE.set({'currentUserId': id})
-
-	},
-
-	returnUserById: function(id){
-		var theUserId = id
-		var usersCollection = STORE.get('userCollection')
-
-		usersCollection.fetch()
+	fetchQueue: function(){
+		var queueColl = STORE.get('queueCollection')
+		queueColl.fetch()
 
 			.then(function() {
+					console.log(queueColl)
+				STORE.set({
 
-				console.log(usersCollection.models)
-
-				for(var i = 0; i < usersCollection.models.length; i++){
-
-					if(usersCollection.models[i].attributes._id === id){
-						console.log('found a match')
-						STORE.set({
-
-							selectedUser: usersCollection.models[i].attributes
-
-						})
-						console.log(STORE.data.selectedUser)
-						return(usersCollection.models[i].attributes)
-					}
-				}
+					queueCollection: queueColl
+				})
 			})
+	},
+
+	addUserToQueue: function() {
+		let userId = User.getCurrentUser().get('_id')
+		$.ajax({
+			method: 'PUT',
+			type: 'json',
+			url: `api/queue/add/${userId}`,
+		})
+		.done(()=>{
+			ACTIONS.fetchQueue()
+		})
+		.fail((err)=>{
+			alert(err.responseText)
+		})
+	},
+
+	removeUserFromQueue: function() {
+		let userId = User.getCurrentUser().get('_id')
+		$.ajax({
+			method: 'PUT',
+			type: 'json',
+			url: `api/queue/delete/${userId}`,
+		})
+		.done(()=>{
+			ACTIONS.fetchQueue()
+		})
+		.fail((err)=>{
+			alert(err.responseText)
+		})
 
 	}
 }

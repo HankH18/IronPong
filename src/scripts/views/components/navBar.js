@@ -1,6 +1,7 @@
 import React from 'react'
 import ACTIONS from '../../actions'
 import STORE from '../../store.js'
+import User from '../../models/userModel'
 
 var NavBar = React.createClass({
 
@@ -28,9 +29,8 @@ var NavBar = React.createClass({
 	},
 
 	render: function() {
+		//<a href="/#profile/:id">Profile</a>
 
-		console.log(this.state.userLoginStatus)
-		console.log(location.hash.split('/')[1])
 		return(
 
 			<div className='nav-bar-wrapper'>
