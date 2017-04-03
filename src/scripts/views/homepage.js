@@ -24,13 +24,24 @@ var HomePage = React.createClass({
 				<Header />
 				<NavBar />
 				<div id='home-page-columns'>
+					<div id='button-col'>
+						<a href='#create_game'>
+							<button id='home-button'>Create a Game</button> 
+						</a>
+							<button id='home-button' onClick={ACTIONS.addUserToQueue}>Join the Queue</button>
+						<a href='#leaderboard'>
+							<button id='home-button'>View Leaderboard</button>
+						</a>
+						<a href={"/#profile/" + STORE.data.currentUserId}>
+							<button id='home-button'>View my Profile</button>
+						</a>
+					</div>
 					<div id='queue-col'>
 						<h4>Current Queue</h4>
 						<HomeQueue queueCollection={this.state.queueCollection} />
 					</div>
 				</div>
-			</div>
-		)
+			</div>		)
 	}
 
 })
