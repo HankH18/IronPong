@@ -13,6 +13,7 @@ var loginUrl = '/auth/login'
 
 // ..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
 const UserAuthModel = Backbone.Model.extend({
+
 	urlRoot: usersUrl,
 	idAttribute: '_id'
 })

@@ -16,6 +16,7 @@ export const GameCollection = Backbone.Collection.extend({
 	url: theUrl,
 	urlRoot: theUrl,
 	idAttribute: '_id'
+
 })
 
 export const QueueCollection = Backbone.Collection.extend({
