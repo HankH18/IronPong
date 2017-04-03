@@ -8,18 +8,12 @@ var ProfilePage = React.createClass({
 
 	componentWillMount: function(){
 
-<<<<<<< HEAD
+		
 		ACTIONS.fetchUsers()
-
+		ACTIONS.fetchGames()
 		STORE.on('dataUpdated', () => {
 			
 			this.setState(STORE.data)
-
-=======
-		ACTIONS.fetchGames()
-		STORE.on('dataUpdated', () => {
-			this.setState(STORE.data)
->>>>>>> a7ba3c63350cc032d3d9a88cdca9494ad278eadc
 		})
 
 	},
@@ -29,6 +23,66 @@ var ProfilePage = React.createClass({
 		return STORE.data
 
 	},
+
+	render: function(){
+
+		var users = this.state.userCollection.models
+
+		var totalGamesArray = this.state.items.models
+		console.log(totalGamesArray)
+
+		var currentUserId = this.props.currentUserId
+
+		var recentGamesArray = []
+
+		for (var i = 0; i < totalGamesArray.length; i ++) {
+			if (totalGamesArray[i].attributes.playerOne === currentUserId ||
+				totalGamesArray[i].attributes.playerTwo === currentUserId) {
+				recentGamesArray.push(totalGamesArray[i])
+			}
+		}
+
+		for(var i = 0; i < users.length; i++){
+
+			var theUser = users[i].attributes
+
+			if(location.hash.split('/')[1] === theUser._id){
+
+				return(
+
+					<div className = 'profile-page-wrapper'>
+
+						<Header />
+
+						<NavBar />
+
+						<div className = 'user-info-wrapper'>
+
+							<AvatarComponent user = {theUser} />
+
+							<StatsComponent stats = {theUser} />
+
+						</div>
+
+						<RecentGamesComponent recentGames={recentGamesArray} makeItem={this.createRecentGames}/>
+
+					</div>
+
+				)
+
+			}
+			else{
+				return(<div></div>)
+			}
+		}
+
+		
+
+	}
+
+})
+
+var RecentGamesComponent = React.createClass({
 
 	createRecentGames: function(singleGame) {
 		var attributes = singleGame.attributes
@@ -44,90 +98,19 @@ var ProfilePage = React.createClass({
 
 	render: function(){
 
-<<<<<<< HEAD
-		var users = this.state.userCollection.models
-=======
-		var totalGamesArray = this.state.items.models
-		console.log(totalGamesArray)
-
-		var currentUserId = this.props.currentUserId
-
-		var recentGamesArray = []
-
-		for (var i = 0; i < totalGamesArray.length; i ++) {
-			if (totalGamesArray[i].attributes.playerOne === currentUserId ||
-				totalGamesArray[i].attributes.playerTwo === currentUserId) {
-				recentGamesArray.push(totalGamesArray[i])
-			}
-		}
-
-		return(
-
-			<div className = 'profile-page-wrapper'>
-
-				<Header />
-
-				<NavBar />
->>>>>>> a7ba3c63350cc032d3d9a88cdca9494ad278eadc
-
-		console.log(users)
-
-<<<<<<< HEAD
-		for(var i = 0; i < users.length; i++){
-=======
-				<RecentGamesComponent recentGames={recentGamesArray} makeItem={this.createRecentGames}/>	
->>>>>>> a7ba3c63350cc032d3d9a88cdca9494ad278eadc
-
-			var theUser = users[i].attributes
-
-			if(location.hash.split('/')[1] === theUser._id){
-
-				return(
-
-				<div className = 'profile-page-wrapper'>
-
-					<Header />
-
-					<NavBar />
-
-					<div className = 'user-info-wrapper'>
-
-						<AvatarComponent user = {theUser} />
-
-<<<<<<< HEAD
-						<StatsComponent stats = {theUser} />
-
-					</div>
-
-				</div>
-
-				)
-
-			}
-		}
-		
-		return(
-
-			<div className = 'profile-page-wrapper'>
-=======
-	render: function(){
-
 		return (
 
 			<div className = 'recent-games-wrapper'>
 				<h2>Recent Games</h2>
 				{this.props.recentGames.map(this.props.makeItem)}
->>>>>>> a7ba3c63350cc032d3d9a88cdca9494ad278eadc
 
 			</div>
 
 		)
 
 	}
-
 })
 
-<<<<<<< HEAD
 var AvatarComponent = React.createClass({
 
 	render: function(){
@@ -143,8 +126,7 @@ var AvatarComponent = React.createClass({
 		)
 	}
 })
-=======
->>>>>>> a7ba3c63350cc032d3d9a88cdca9494ad278eadc
+
 
 var StatsComponent = React.createClass({
 

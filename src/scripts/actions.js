@@ -159,8 +159,7 @@ const ACTIONS = {
 		.fail((err)=>{
 			alert(err.responseText)
 		})
-<<<<<<< HEAD
-=======
+
 	},
 	createNewGame: function(ev) {
 		ev.preventDefault()
@@ -217,7 +216,6 @@ const ACTIONS = {
 			})
 			newGame.save().then(location.hash='leaderboard')
 		})
->>>>>>> a7ba3c63350cc032d3d9a88cdca9494ad278eadc
 
 	}
 }

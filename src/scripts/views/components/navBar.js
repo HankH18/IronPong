@@ -35,17 +35,17 @@ var NavBar = React.createClass({
 	},
 
 	render: function() {
-<<<<<<< HEAD
+
 		//<a href="/#profile/:id">Profile</a>
 		console.log(STORE.data.currentUserId)
-=======
+
 		console.log(this.state.userLoginStatus)
 
 		var userId = User.getCurrentUser()
 		console.log('userid', userId)
 		let gamePage = (User.getCurrentUser()) ? <a href="/#create_game">Create New Game</a> : null
 
->>>>>>> a7ba3c63350cc032d3d9a88cdca9494ad278eadc
+
 		return(
 
 			<div className='nav-bar-wrapper'>
