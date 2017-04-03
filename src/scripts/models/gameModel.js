@@ -1,10 +1,12 @@
 import Backbone from 'backbone'
 
+
 //var theUrl = 'https://iron-pong.herokuapp.com/api/games'
 var theUrl = '/api/games'
 
+
 export const GameModel = Backbone.Model.extend({
-	urlRoot: theUrl,
+	urlRoot: '/api/games',
 	idAttribute: '_id'
 })
 
@@ -13,15 +15,12 @@ export const GameCollection = Backbone.Collection.extend({
 		return new Date(mod.get('createdAt')).getTime()*-1
 	},
 	model: GameModel,
-	url: theUrl,
-	urlRoot: theUrl,
-	idAttribute: '_id'
-
+	url: 'api/games'
 })
 
 export const QueueCollection = Backbone.Collection.extend({
 	idAttribute: '_id',
-	url:'https://iron-pong.herokuapp.com/api/queue',
+	url:'/api/queue',
 	parse: function(apiResponse){
 		console.log(apiResponse)
 		return apiResponse[0].queueMembers

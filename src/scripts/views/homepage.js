@@ -32,7 +32,10 @@ var HomePage = React.createClass({
 						<a href='#leaderboard'>
 							<button id='home-button'>View Leaderboard</button>
 						</a>
+
 						<a href={"/#profile/" + STORE.data.currentUserId}>
+
+
 							<button id='home-button'>View my Profile</button>
 						</a>
 					</div>
