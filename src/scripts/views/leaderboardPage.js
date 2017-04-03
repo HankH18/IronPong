@@ -40,29 +40,31 @@ var LeaderboardDisplay = React.createClass({
 		})
 		
 		return(
-			<div>
-				<table>
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th>Wins</th>
-							<th>Losses</th>
-							<th>Winning Streak</th>
-							<th>Winning Percentage</th>
-						</tr>
-					</thead>
-					<tbody>
-						{users.map( (user) => {
-							return <tr key={user.get("_id")}>
-								<td>{user.get("nickName")}</td>
-								<td>{user.get("wins")}</td>
-								<td>{user.get("losses")}</td>
-								<td>{user.get("winStreak")}</td>
-								<td>{user.get("winRatio")}</td>
-							</tr>
-						})}
-					</tbody>
-				</table>
+			<div id="leaderboardDisplay">
+				<h2>Leaderboard</h2>
+				<div className="leaderboard-row">
+					<div className="leaderboard-column nick-name">Name</div>
+					<div className="leaderboard-column wins">Wins</div>
+					<div className="leaderboard-column losses">Losses</div>
+					<div className="leaderboard-column win-streak">Win Streak</div>
+					<div className="leaderboard-column win-ratio">Win Ratio</div>
+					<div className="leaderboard-column trophy"></div>
+				</div>
+				{users.map( (user, i) => {
+					return <div className="leaderboard-row" key={user.get("_id")}>
+						<div className="leaderboard-column nick-name">{user.get("nickName")}</div>
+						<div className="leaderboard-column wins">{user.get("wins")}</div>
+						<div className="leaderboard-column losses">{user.get("losses")}</div>
+						<div className="leaderboard-column win-streak">{user.get("winStreak")}</div>
+						<div className="leaderboard-column win-ratio">{user.get("winRatio")}</div>
+
+						<div className="leaderboard-column trophy">
+							{i === 0 &&
+							<img src="/images/trophy.png"/>
+							}
+						</div>
+					</div>
+				})}
 
 			</div>
 		)

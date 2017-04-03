@@ -18,6 +18,7 @@ $colorCallout: #6fbbb7;
 $colorOverDark: white;
 $colorOverLight: $colorDarkest;
 $colorReject: red;	
+$colorLightGrey: #D1D2D4;
 
 html{
 
@@ -530,9 +531,17 @@ button:hover, a:hover {
 
 	.leaderboard-page-wrapper{
 
-		background: $colorBase;
+		#leaderboardDisplay {
+			width: 100%;
+			margin: 40px auto;
 
+			.leaderboard-column {
+				font-size: 0.75 * $fontSizeBody;
+				padding: 0.5rem;
+			}
 		}
+
+	}
 
 	.create-game-page-wrapper{
 
@@ -590,5 +599,70 @@ button:hover, a:hover {
 		float: right;
 	}
 
+	/*----------
+	Leaderboard view
+	------------*/
 
+	#leaderboardDisplay {
+		width: 80%;
+		margin: 40px auto;
 
+		h2 {
+			color: white;
+			text-align: center;
+		}
+
+		.leaderboard-row {
+			    display:flex;
+			    flex-direction: row;
+			    flex-wrap: nowrap;
+			    justify-content: space-between;
+			    align-content: center;
+			    align-items: center;
+			    &:first-child {
+			    	background-color: $colorCallout;
+			    	text-align: center;
+			    	font-weight: bold;
+			    	font-style: italic;
+			    }
+			    background-color: white;
+			    border-top: 1px solid $colorCallout;
+			    &:nth-of-type(even){
+			    	background-color: $colorLightGrey;
+			    }
+		}
+		.leaderboard-column {
+			font-size: $fontSizeBody;
+			font-family: $mainFont;
+			line-height: $lh * 1.2;
+			padding: 0.5 * $lh;	
+			border-right: 1px solid $colorCallout;
+
+			&.nick-name {
+				flex: 4;
+			}
+			&.wins {
+				flex: 1;
+			}
+			&.losses {
+				flex: 1;
+			}
+			&.win-ratio {
+				flex: 1;
+			}
+			&.win-streak {
+				flex: 1;
+			}
+			&.trophy {
+				flex: 1;
+				padding: 0;
+				height: 50px;
+				width: 50px;
+				img {
+					width: 48px;
+					max-width: 100%;
+				}
+				text-align: center;
+			}
+		}
+	}
