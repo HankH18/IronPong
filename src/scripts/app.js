@@ -57,7 +57,7 @@ const app = function() {
 
 	    renderProfilePage: function(ID){
 
-    		ReactDOM.render(<ProfilePage currentUserId={User.getCurrentUser().id} />, document.querySelector('.container'))
+    		ReactDOM.render(<ProfilePage currentUserId={User.getCurrentUser()._id} />, document.querySelector('.container'))
 
     	},
 

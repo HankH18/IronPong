@@ -31,7 +31,7 @@ var ProfilePage = React.createClass({
 		var totalGamesArray = this.state.items.models
 		console.log(totalGamesArray)
 
-		var currentUserId = this.props.currentUserId
+		var currentUserId = location.hash.split('/')[1]
 
 		var recentGamesArray = []
 
@@ -42,12 +42,15 @@ var ProfilePage = React.createClass({
 			}
 		}
 
+		console.log(users)
+		console.log(recentGamesArray)
+
 		for(var i = 0; i < users.length; i++){
 
 			var theUser = users[i].attributes
-
+			console.log(theUser._id, location.hash.split('/')[1])
 			if(location.hash.split('/')[1] === theUser._id){
-
+				console.log('found the user')
 				return(
 
 					<div className = 'profile-page-wrapper'>
@@ -64,20 +67,18 @@ var ProfilePage = React.createClass({
 
 						</div>
 
-						<RecentGamesComponent recentGames={recentGamesArray} makeItem={this.createRecentGames}/>
+						<RecentGamesComponent recentGames={recentGamesArray} />
 
 					</div>
 
 				)
 
 			}
-			else{
-				return(<div></div>)
-			}
+		
 		}
 
 		
-
+		return(<div></div>)
 	}
 
 })
@@ -102,7 +103,7 @@ var RecentGamesComponent = React.createClass({
 
 			<div className = 'recent-games-wrapper'>
 				<h2>Recent Games</h2>
-				{this.props.recentGames.map(this.props.makeItem)}
+				{this.props.recentGames.map(this.createRecentGames)}
 
 			</div>
 
