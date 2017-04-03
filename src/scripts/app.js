@@ -78,7 +78,7 @@ const app = function() {
     	},
 
     	renderReclaimUpdatePage: function(id){
-
+ 
 			ReactDOM.render(<ReclaimUpdatePage userID={id}/>, document.querySelector('.container'))
 
     	},

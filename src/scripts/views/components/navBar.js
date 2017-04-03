@@ -36,8 +36,6 @@ var NavBar = React.createClass({
 	render: function() {
 		console.log(this.state.userLoginStatus)
 
-		var userId = User.getCurrentUser()
-		console.log('userid', userId)
 		let gamePage = (User.getCurrentUser()) ? <a href="/#create_game">Create New Game</a> : null
 
 		return(

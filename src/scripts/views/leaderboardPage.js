@@ -53,20 +53,20 @@ var LeaderboardDisplay = React.createClass({
 					</thead>
 					<tbody>
 						{users.map( (user) => {
-							return <tr key={user.get("_id")}>
-								<td>{user.get("nickName")}</td>
-								<td>{user.get("wins")}</td>
-								<td>{user.get("losses")}</td>
-								<td>{user.get("winStreak")}</td>
-								<td>{user.get("winRatio")}</td>
-							</tr>
+							return( 
+								<tr key={user.get("_id")}>
+									<td>{user.get("nickName")}</td>
+									<td>{user.get("wins")}</td>
+									<td>{user.get("losses")}</td>
+									<td>{user.get("winStreak")}</td>
+									<td>{user.get("winRatio")}</td>
+								</tr>
+							)
 						})}
 					</tbody>
 				</table>
-
 			</div>
 		)
-
 	}
 })
 

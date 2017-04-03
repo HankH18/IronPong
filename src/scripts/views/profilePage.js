@@ -39,6 +39,7 @@ var ProfilePage = React.createClass({
 		console.log(totalGamesArray)
 
 		var currentUserId = this.props.currentUserId
+		console.log('this is the current user', typeof(currentUserId))
 
 		var recentGamesArray = []
 
