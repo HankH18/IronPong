@@ -304,6 +304,82 @@ button:hover, a:hover {
 		background: $colorBase;
 	}
 
+	#leaderboardDisplay {
+		
+		width: 80%;
+		margin: 40px auto;
+
+		h2 {
+			color: white;
+			text-align: center;
+		}
+
+		.leaderboard-row {
+
+		    display:flex;
+		    flex-direction: row;
+		    flex-wrap: nowrap;
+		    justify-content: space-between;
+		    align-content: center;
+		    align-items: center;
+
+		    background-color: white;
+		    border-top: 1px solid $colorCallout;
+
+			    &:first-child {
+			    	background-color: $colorCallout;
+			    	text-align: center;
+			    	font-weight: bold;
+			    	font-style: italic;
+			    }
+	
+			    &:nth-of-type(even){
+			    	background-color: $colorLightGrey;
+			    }
+			}
+
+		.leaderboard-column {
+
+			font-size: $fontSizeBody;
+			font-family: $mainFont;
+			line-height: $lh * 1.2;
+			padding: 0.5 * $lh;	
+			border-right: 1px solid $colorCallout;
+		
+			&.nick-name {
+				flex: 4;
+			}
+
+			&.wins {
+				flex: 1;
+			}
+
+			&.losses {
+				flex: 1;
+			}
+
+			&.win-ratio {
+				flex: 1;
+			}
+
+			&.win-streak {
+				flex: 1;
+			}
+
+			&.trophy {
+				flex: 1;
+				padding: 0;
+				height: 50px;
+				width: 50px;
+					img {
+						width: 48px;
+						max-width: 100%;
+					}
+				text-align: center;
+			}
+		}
+	}
+
 }
 
 @media (max-width: 699px){
@@ -597,9 +673,9 @@ button:hover, a:hover {
 
 	#widget-delete {
 		float: right;
-		}
-}
-/*	#leaderboardDisplay {
+	}
+
+	#leaderboardDisplay {
 		
 		width: 80%;
 		margin: 40px auto;
@@ -610,6 +686,7 @@ button:hover, a:hover {
 		}
 
 		.leaderboard-row {
+
 		    display:flex;
 		    flex-direction: row;
 		    flex-wrap: nowrap;
@@ -643,29 +720,35 @@ button:hover, a:hover {
 			&.nick-name {
 				flex: 4;
 			}
+
 			&.wins {
 				flex: 1;
 			}
+
 			&.losses {
 				flex: 1;
 			}
+
 			&.win-ratio {
 				flex: 1;
 			}
+
 			&.win-streak {
 				flex: 1;
 			}
+
 			&.trophy {
-			flex: 1;
-			padding: 0;
-			height: 50px;
-			width: 50px;
-				img {
-					width: 48px;
-					max-width: 100%;
-				}
-			text-align: center;
+				flex: 1;
+				padding: 0;
+				height: 50px;
+				width: 50px;
+					img {
+						width: 48px;
+						max-width: 100%;
+					}
+				text-align: center;
 			}
 		}
 	}
-}*/
+
+}
