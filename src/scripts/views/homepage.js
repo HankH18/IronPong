@@ -32,7 +32,10 @@ var HomePage = React.createClass({
 						<a href='#leaderboard'>
 							<button id='home-button'>View Leaderboard</button>
 						</a>
-						<a href='#profile/:id'>
+
+						<a href={"/#profile/" + STORE.data.currentUserId}>
+
+
 							<button id='home-button'>View my Profile</button>
 						</a>
 					</div>
@@ -41,8 +44,7 @@ var HomePage = React.createClass({
 						<HomeQueue queueCollection={this.state.queueCollection} />
 					</div>
 				</div>
-			</div>
-		)
+			</div>		)
 	}
 
 })
