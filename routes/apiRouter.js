@@ -11,6 +11,7 @@ let Queue = require('../db/schema').Queue
     .get('/users', function(req, res){
       User.find(req.query , "-password", function(err, results){
         if(err) return res.json(err) 
+        console.log(results)
         res.json(results)
       })
     })
@@ -115,12 +116,16 @@ apiRouter.put('/queue/delete/:_id', function(req, res) {
     
     let ironQueue = records[0],
     userIndex     = ironQueue.queueMembers.indexOf(req.params._id)
-
-    ironQueue.queueMembers.splice(userIndex, 1)
-    ironQueue.save((err, record) => {
-        if(err) return res.status(500).json(`Problem deleting user from database`)
-        res.json(record)
-    })
+    if(userIndex !== -1 ){
+      ironQueue.queueMembers.splice(userIndex, 1)
+      ironQueue.save((err, record) => {
+          if(err) return res.status(500).json(`Problem deleting user from database`)
+          res.json(record)
+      })
+    }
+    else{
+      return res.status(400).json(`Invalid user id`)
+    }
   })
 })
 

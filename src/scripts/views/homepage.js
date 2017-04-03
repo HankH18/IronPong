@@ -5,25 +5,77 @@ import NavBar from './components/navBar'
 import Header from './components/header'
 
 var HomePage = React.createClass({
+	componentWillMount: function() {
+		ACTIONS.fetchQueue()
+		STORE.on('dataUpdated', () => {
+			this.setState(STORE.data)
+		})
+	},
+	componentWillUnmount: function() {
+		STORE.off('dataUpdated')
+	},
+	getInitialState: function() {
+		return STORE.data
+	},
 
 	render: function(){
-
 		return(
-
 			<div className = 'home-page-wrapper'>
 				<Header />
 				<NavBar />
-				<h2>this is a title</h2>
-				<h3>this is a subtitle</h3>
-				<h4>this is a heading</h4>
-				<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-				
+				<div id='home-page-columns'>
+					<div id='button-col'>
+						<a href='#create_game'>
+							<button id='home-button'>Create a Game</button> 
+						</a>
+							<button id='home-button' onClick={ACTIONS.addUserToQueue}>Join the Queue</button>
+						<a href='#leaderboard'>
+							<button id='home-button'>View Leaderboard</button>
+						</a>
+						<a href='#profile/:id'>
+							<button id='home-button'>View my Profile</button>
+						</a>
+					</div>
+					<div id='queue-col'>
+						<h4>Current Queue</h4>
+						<HomeQueue queueCollection={this.state.queueCollection} />
+					</div>
+				</div>
 			</div>
-
 		)
-
 	}
 
+})
+
+var HomeQueue = React.createClass({
+	_makeQueueUser: function(model, index){
+		return(
+			<QueueWidget 
+			queuePosition ={++index}
+			queueModel={model} />
+		)
+	},
+	render: function(){
+		console.log('logging the queuecoll', this.props.queueCollection)
+		return(
+		<div>
+			{this.props.queueCollection.map(this._makeQueueUser)}
+		</div>
+		)
+	}
+})
+
+var QueueWidget = React.createClass({
+	render: function() {
+		return(
+			<div className = 'home-queue-widget'>
+				<p>
+					{this.props.queueModel.get('nickName')}
+					<button id="widget-delete" onClick={ACTIONS.removeUserFromQueue}>X</button>
+				</p>
+			</div>
+		)
+	}
 })
 
 export default HomePage

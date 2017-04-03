@@ -17,7 +17,8 @@ const usersSchema = new mongoose.Schema({
   catchPhrase: {type: String},
   paddleGripStyle: {type: String},
   signatureMove: {type: String},
-  homeTown: {type: String}
+  homeTown: {type: String},
+  claimed: {type:Boolean, default: true}
 })
 
 const gameSchema = new mongoose.Schema({
