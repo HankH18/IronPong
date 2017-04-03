@@ -1,7 +1,7 @@
 import Backbone from 'backbone'
 
-//var theUrl = 'https://iron-pong.herokuapp.com/api/games'
-var theUrl = '/api/games'
+var theUrl = 'https://iron-pong.herokuapp.com/api/games'
+//var theUrl = '/api/games'
 
 export const GameModel = Backbone.Model.extend({
 	urlRoot: theUrl,
@@ -21,7 +21,7 @@ export const GameCollection = Backbone.Collection.extend({
 
 export const QueueCollection = Backbone.Collection.extend({
 	idAttribute: '_id',
-	url:'/api/queue',
+	url:'https://iron-pong.herokuapp.com/api/queue',
 	parse: function(apiResponse){
 		console.log(apiResponse)
 		return apiResponse[0].queueMembers
