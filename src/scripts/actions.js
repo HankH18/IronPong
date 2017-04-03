@@ -118,6 +118,8 @@ const ACTIONS = {
 		.fail((err)=>{
 			alert(err.responseText)
 		})
+	},
+	
 	fetchGames: function() {
 		var gameColl = STORE.get('items')
 		gameColl.fetch()
