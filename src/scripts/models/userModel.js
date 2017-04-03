@@ -4,7 +4,7 @@ import {app_name} from '../app'
 
 // ..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
 const UserAuthModel = Backbone.Model.extend({
-	urlRoot: '/api/users',
+	url: 'https://iron-pong.herokuapp.com/api/users',
 	idAttribute: '_id'
 })
 

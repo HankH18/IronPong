@@ -13,6 +13,7 @@ import ProfilePage from './views/profilePage.js'
 import CreateGamePage from './views/createGamePage.js'
 import LeaderboardPage from './views/leaderboardPage.js'
 import ReclaimPage from './views/reclaimPage.js'
+import ReclaimUpdatePage from './views/reclaimUpdatePage.js'
 import QueuePage from './views/queuePage.js'
 
 
@@ -26,6 +27,7 @@ const app = function() {
 	    	'leaderboard': 'renderLeaderboardPage',
 	    	'create_game': 'renderCreateGamePage',
 	    	'reclaim': 'renderReclaimPage',
+	    	'reclaim/:id': 'renderReclaimUpdatePage',
 	    	'queue': 'renderQueuePage',
 	    	'*default': 'handleRedirect',
 
@@ -69,6 +71,12 @@ const app = function() {
     	renderReclaimPage: function(){
 
     		ReactDOM.render(<ReclaimPage />, document.querySelector('.container'))
+
+    	},
+
+    	renderReclaimUpdatePage: function(id){
+
+			ReactDOM.render(<ReclaimUpdatePage userID={id}/>, document.querySelector('.container'))
 
     	},
 

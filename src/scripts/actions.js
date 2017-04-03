@@ -102,6 +102,22 @@ const ACTIONS = {
 			})
 	},
 
+	reclaimUser: function(userID,formData){
+		console.log(JSON.stringify(formData))
+		$.ajax({
+			method: 'PUT',
+			type: 'json',
+			url: `api/users/${userID}`,
+			data: formData
+		})
+		.done((res)=>{
+			ACTIONS.loginUser(formData.email, formData.password)
+		})
+		.fail((err)=>{
+			alert(err.responseText)
+		})
+	},
+
 	addUserToQueue: function() {
 		let userId = User.getCurrentUser().get('_id')
 		$.ajax({
