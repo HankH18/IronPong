@@ -8,82 +8,18 @@ var ProfilePage = React.createClass({
 
 	componentWillMount: function(){
 
-		
-		ACTIONS.fetchUsers()
 		ACTIONS.fetchGames()
 		STORE.on('dataUpdated', () => {
-			
 			this.setState(STORE.data)
 		})
 
 	},
 
 	getInitialState: function(){
-	
+
 		return STORE.data
 
 	},
-
-	render: function(){
-
-		var users = this.state.userCollection.models
-
-		var totalGamesArray = this.state.items.models
-		console.log(totalGamesArray)
-
-		var currentUserId = location.hash.split('/')[1]
-
-		var recentGamesArray = []
-
-		for (var i = 0; i < totalGamesArray.length; i ++) {
-			if (totalGamesArray[i].attributes.playerOne === currentUserId ||
-				totalGamesArray[i].attributes.playerTwo === currentUserId) {
-				recentGamesArray.push(totalGamesArray[i])
-			}
-		}
-
-		console.log(users)
-		console.log(recentGamesArray)
-
-		for(var i = 0; i < users.length; i++){
-
-			var theUser = users[i].attributes
-			console.log(theUser._id, location.hash.split('/')[1])
-			if(location.hash.split('/')[1] === theUser._id){
-				console.log('found the user')
-				return(
-
-					<div className = 'profile-page-wrapper'>
-
-						<Header />
-
-						<NavBar />
-
-						<div className = 'user-info-wrapper'>
-
-							<AvatarComponent user = {theUser} />
-
-							<StatsComponent stats = {theUser} />
-
-						</div>
-
-						<RecentGamesComponent recentGames={recentGamesArray} />
-
-					</div>
-
-				)
-
-			}
-		
-		}
-
-		
-		return(<div></div>)
-	}
-
-})
-
-var RecentGamesComponent = React.createClass({
 
 	createRecentGames: function(singleGame) {
 		var attributes = singleGame.attributes
@@ -99,33 +35,69 @@ var RecentGamesComponent = React.createClass({
 
 	render: function(){
 
+		var totalGamesArray = this.state.items.models
+		console.log(totalGamesArray)
+
+		var currentUserId = this.props.currentUserId
+
+		var recentGamesArray = []
+
+		for (var i = 0; i < totalGamesArray.length; i ++) {
+			if (totalGamesArray[i].attributes.playerOne === currentUserId ||
+				totalGamesArray[i].attributes.playerTwo === currentUserId) {
+				recentGamesArray.push(totalGamesArray[i])
+			}
+		}
+
+		return(
+
+			<div className = 'profile-page-wrapper'>
+
+				<Header />
+
+				<NavBar />
+
+				<StatsComponent stats = {this.state}/>
+
+				<RecentGamesComponent recentGames={recentGamesArray} makeItem={this.createRecentGames}/>	
+
+			</div>
+
+		)
+
+	}
+
+})
+
+var AvatarComponent = React.createClass({
+	render: function(){
+
+		return(
+
+			<div className = 'avatar-img'>
+				<img src='images/doge.png'/>
+			</div>
+
+		)
+	}
+})
+
+var RecentGamesComponent = React.createClass({
+
+	render: function(){
+
 		return (
 
 			<div className = 'recent-games-wrapper'>
 				<h2>Recent Games</h2>
-				{this.props.recentGames.map(this.createRecentGames)}
+				{this.props.recentGames.map(this.props.makeItem)}
 
 			</div>
 
 		)
 
 	}
-})
 
-var AvatarComponent = React.createClass({
-
-	render: function(){
-		console.log(this.props.user)
-		return(
-		
-			<div className = 'avatar-wrapper'>
-				<h3>{this.props.user.nickName}</h3>
-				<div className = 'avatar-img'>
-					<img src='images/sid.png'/>
-				</div>
-			</div>
-		)
-	}
 })
 
 
@@ -137,9 +109,9 @@ var StatsComponent = React.createClass({
 
 			<div className = 'profile-stats-wrapper'>
 
+				<h3>spread: {this.props.stats.spread}</h3>
 				<h3>wins: {this.props.stats.wins}</h3>
 				<h3>losses: {this.props.stats.losses}</h3>
-				<h3>spread: {this.props.stats.winRatio}</h3>
 				
 			</div>
 
@@ -148,5 +120,6 @@ var StatsComponent = React.createClass({
 	}
 
 })
+
 
 export default ProfilePage

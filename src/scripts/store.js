@@ -11,8 +11,6 @@ const STORE = Object.assign({}, Backbone.Events, {
 
 		items: new GameCollection,
 		userCollection: new UserCollection,
-		userLoginStatus: 'Log In',
-		currentUserId: "",
 		queueCollection: new QueueCollection,
 		userLoginStatus: 'Log In'
 

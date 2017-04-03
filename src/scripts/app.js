@@ -48,16 +48,15 @@ const app = function() {
 
 	    },
 
-	    renderLoginPage: function(id){
+	    renderLoginPage: function(){
 	    	ACTIONS.loggedInStatus()
-	    	console.log(id)
-	    	ReactDOM.render(<LoginPage userId = {id}/>, document.querySelector('.container'))
+	    	ReactDOM.render(<LoginPage />, document.querySelector('.container'))
 
 	    },
 
 	    renderProfilePage: function(ID){
 
-    		ReactDOM.render(<ProfilePage currentUserId={User.getCurrentUser()._id} />, document.querySelector('.container'))
+    		ReactDOM.render(<ProfilePage currentUserId={User.getCurrentUser().id} />, document.querySelector('.container'))
 
     	},
 

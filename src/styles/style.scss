@@ -81,7 +81,7 @@ p {
 
 .faq-page {
 	color: white;
-	}
+}
 
 .etiquette {
 	margin-top: 50px;
@@ -96,11 +96,11 @@ p {
 
 .rules h4 {
 	color: $colorDarkest;
-	}
+}
 
 .rules h3 {
 	text-shadow: 2px 2px grey;
-	}
+}
 
 button:hover, a:hover {
 	cursor: pointer;
@@ -151,8 +151,6 @@ button:hover, a:hover {
 		}
 
 	.login-page-wrapper{
-
-		background: $colorBase;
 
 		.register-login-wrapper{
 
@@ -218,71 +216,13 @@ button:hover, a:hover {
 
 		background: $colorBase;
 
+		}
 
 	.profile-page-wrapper{
 
 		background: $colorBase;
 
-		.user-info-wrapper{
-
-			margin: .5rem;
-			width: 38vw;
-			text-align: left;
-			.avatar-wrapper{
-
-				background: $colorDarkest;
-
-				h3{
-
-					padding: .5rem;
-					font-size: $fontSizeTitle;
-					color: white;
-					margin: 0;
-
-				}
-
-				.avatar-img{
-				
-					width: 256px;
-					height: 256px;
-					padding: .8rem;
-					margin: .2rem;
-					text-align: left;
-					vertical-align: left;
-					margin-top: 0;
-
-					img{
-
-						width: 512px;
-						max-width: 100%;
-
-					}			
-
-				}
-
-			}
-
-			.profile-stats-wrapper{
-
-				border-radius: 12px;
-				padding: .2rem;
-				margin: .5rem;
-					
-					h3{	
-						padding-left: .5rem;
-						border-radius: 12px;
-						color: white;
-						margin: .2rem;
-						background: $colorDarkest;
-
-					}
-
-					background: none;
-				
-			}
 		}
-
-	}
 
 	.queue-page-wrapper{
 
@@ -291,7 +231,6 @@ button:hover, a:hover {
 			background: $colorBase;
 
 		}
-	}
 
 	.leaderboard-page-wrapper{
 
@@ -304,93 +243,17 @@ button:hover, a:hover {
 		background: $colorBase;
 	}
 
-	#leaderboardDisplay {
-		
-		width: 80%;
-		margin: 40px auto;
-
-		h2 {
-			color: white;
-			text-align: center;
-		}
-
-		.leaderboard-row {
-
-		    display:flex;
-		    flex-direction: row;
-		    flex-wrap: nowrap;
-		    justify-content: space-between;
-		    align-content: center;
-		    align-items: center;
-
-		    background-color: white;
-		    border-top: 1px solid $colorCallout;
-
-			    &:first-child {
-			    	background-color: $colorCallout;
-			    	text-align: center;
-			    	font-weight: bold;
-			    	font-style: italic;
-			    }
-	
-			    &:nth-of-type(even){
-			    	background-color: $colorLightGrey;
-			    }
-			}
-
-		.leaderboard-column {
-
-			font-size: $fontSizeBody;
-			font-family: $mainFont;
-			line-height: $lh * 1.2;
-			padding: 0.5 * $lh;	
-			border-right: 1px solid $colorCallout;
-		
-			&.nick-name {
-				flex: 4;
-			}
-
-			&.wins {
-				flex: 1;
-			}
-
-			&.losses {
-				flex: 1;
-			}
-
-			&.win-ratio {
-				flex: 1;
-			}
-
-			&.win-streak {
-				flex: 1;
-			}
-
-			&.trophy {
-				flex: 1;
-				padding: 0;
-				height: 50px;
-				width: 50px;
-					img {
-						width: 48px;
-						max-width: 100%;
-					}
-				text-align: center;
-			}
-		}
-	}
-
 }
 
 @media (max-width: 699px){
 
 	.register-login-wrapper{
 		text-align: center;
-		}
+	}
 
 	.reclaim-button{
 		display: block;
-		}
+	}
 
 	.header-wrapper{
 
@@ -428,7 +291,7 @@ button:hover, a:hover {
 		padding: 0;
 		margin: 0;
 
-	}
+		}
 
 	.login-page-wrapper{
 
@@ -486,116 +349,85 @@ button:hover, a:hover {
 
 	.profile-page-wrapper{
 
-		.user-info-wrapper{
+		background: $colorBase;
 
-			background: $colorBase;
-			width: 90vw;
-			margin: auto;
-			.avatar-wrapper{
+		.profile-stats-wrapper{
 
-				background: $colorDarkest;
-
-				h3{
-
-					padding: .5rem;
-					font-size: $fontSizeTitle;
-					color: white;
-					margin: 0;
-
-				}
-
-				.avatar-img{
+			border-radius: 12px;
+				padding: .2rem;
+				margin: .8rem;
 				
-					width: 150px;
-					height: 150px;
-					padding: .8rem;
-					margin: auto;
-					text-align: left;
-					vertical-align: left;
-					margin-top: 0;
-
-					img{
-
-						width: 256px;
-						max-width: 100%;
-
-					}			
-
-				}
-
-			}
-
-			.profile-stats-wrapper{
-					
+				h3{	
 					border-radius: 12px;
-					padding: .2rem;
-					margin: .5rem;
-					
-					h3{	
-						padding-left: .5rem;
-						border-radius: 12px;
-						color: white;
-						margin: .2rem;
-						background: $colorDarkest;
+					color: white;
+					margin: .2rem;
+					padding-left: .5rem;
+					padding-top: .1rem;
+					background: $colorDarkest;
+				}
 
-					}
-				
-			}
+				h4{	
+					border-radius: 12px;
+					color: white;
+					margin: .2rem;
+					padding-left: .5rem;
+					padding-top: .1rem;
+					background: $colorDarkest;
+				}
 
+				background: none;
+				border: .2rem solid $colorBase;
 			
 
-			.recent-games-wrapper{
+		}
 
-				h2{
+		.recent-games-wrapper{
 
-					margin-top: 0;
-					padding-top: 0;
-					color: white;
-					padding-bottom: 0;
+			h2{
+				margin-top: 0;
+				padding-top: 0;
+				color: white;
+				padding-bottom: 0;
+			}
 
-				}
+			.game-snapshot-wrapper{
 
-				.game-snapshot-wrapper{
-
+				border-radius: 12px;
+				padding: .2rem;
+				margin: .8rem;
+				
+				h3{	
 					border-radius: 12px;
-					padding: .2rem;
-					margin: .8rem;
-					
-					h3{	
-						border-radius: 12px;
-						color: white;
-						margin: .2rem;
-						padding-left: .5rem;
-						padding-top: .1rem;
-						background: $colorBase;
-					}
-
-					h4{	
-						border-radius: 12px;
-						color: white;
-						margin: .2rem;
-						padding-left: .5rem;
-						padding-top: .1rem;
-						background: $colorBase;
-					}
-
-					background: none;
-					border: .2rem solid $colorBase;
-
+					color: white;
+					margin: .2rem;
+					padding-left: .5rem;
+					padding-top: .1rem;
+					background: $colorBase;
 				}
 
-				padding: 1rem;
-				display: block;
-				margin-left: auto;
-				margin-right: auto;
-				margin-top: 1rem;
-				margin-bottom: 1rem;
-				width: 80vw;
-				background: $colorDarkest;
+				h4{	
+					border-radius: 12px;
+					color: white;
+					margin: .2rem;
+					padding-left: .5rem;
+					padding-top: .1rem;
+					background: $colorBase;
+				}
 
+				background: none;
+				border: .2rem solid $colorBase;
 			}
 
-			}
+			padding: 1rem;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 1rem;
+			margin-bottom: 1rem;
+			width: 80vw;
+			background: $colorDarkest;
+
+		}
 
 		}
 
@@ -623,11 +455,15 @@ button:hover, a:hover {
 
 		background: $colorBase;
 
+		}
 	}
 
+	/*------------------------
+	Home Page View
+	-------------------------*/
 	#home-page-columns {
 		position: relative;
-		}
+	}
 
 	#button-col {
 		display: inline-block;
@@ -649,7 +485,7 @@ button:hover, a:hover {
 
 	#home-button:hover {
 		background-color: $colorDarkest;
-		}
+	}
 
 	#queue-col {
 		display: inline-block;
@@ -669,14 +505,17 @@ button:hover, a:hover {
 
 	.home-queue-widget {
 		padding-left: 10px;
-		}
+	}
 
 	#widget-delete {
 		float: right;
 	}
 
+	/*----------
+	Leaderboard view
+	------------*/
+
 	#leaderboardDisplay {
-		
 		width: 80%;
 		margin: 40px auto;
 
@@ -686,69 +525,56 @@ button:hover, a:hover {
 		}
 
 		.leaderboard-row {
-
-		    display:flex;
-		    flex-direction: row;
-		    flex-wrap: nowrap;
-		    justify-content: space-between;
-		    align-content: center;
-		    align-items: center;
-
-		    background-color: white;
-		    border-top: 1px solid $colorCallout;
-
+			    display:flex;
+			    flex-direction: row;
+			    flex-wrap: nowrap;
+			    justify-content: space-between;
+			    align-content: center;
+			    align-items: center;
 			    &:first-child {
 			    	background-color: $colorCallout;
 			    	text-align: center;
 			    	font-weight: bold;
 			    	font-style: italic;
 			    }
-	
+			    background-color: white;
+			    border-top: 1px solid $colorCallout;
 			    &:nth-of-type(even){
 			    	background-color: $colorLightGrey;
 			    }
-			}
-
+		}
 		.leaderboard-column {
-
 			font-size: $fontSizeBody;
 			font-family: $mainFont;
 			line-height: $lh * 1.2;
 			padding: 0.5 * $lh;	
 			border-right: 1px solid $colorCallout;
-		
+
 			&.nick-name {
 				flex: 4;
 			}
-
 			&.wins {
 				flex: 1;
 			}
-
 			&.losses {
 				flex: 1;
 			}
-
 			&.win-ratio {
 				flex: 1;
 			}
-
 			&.win-streak {
 				flex: 1;
 			}
-
 			&.trophy {
 				flex: 1;
 				padding: 0;
 				height: 50px;
 				width: 50px;
-					img {
-						width: 48px;
-						max-width: 100%;
-					}
+				img {
+					width: 48px;
+					max-width: 100%;
+				}
 				text-align: center;
 			}
 		}
 	}
-
-}
