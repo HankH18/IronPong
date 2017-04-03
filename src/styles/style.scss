@@ -78,6 +78,29 @@ p {
 
 }
 
+.faq-page {
+	color: white;
+}
+
+.etiquette {
+	margin-top: 50px;
+	text-align: center;
+}
+
+.rules {
+	border: 2px solid black;
+	background: $colorCallout;
+	text-align: center;
+}
+
+.rules h4 {
+	color: $colorDarkest;
+}
+
+.rules h3 {
+	text-shadow: 2px 2px grey;
+}
+
 button:hover, a:hover {
 	cursor: pointer;
 }
@@ -204,9 +227,7 @@ button:hover, a:hover {
 
 		th,td{
 			font-size: $fontSizeBody;
-		}
-
-		background: $colorBase;
+			background: $colorBase;
 
 		}
 
@@ -219,8 +240,7 @@ button:hover, a:hover {
 	.create-game-page-wrapper{
 
 		background: $colorBase;
-
-		}
+	}
 
 }
 
@@ -428,4 +448,59 @@ button:hover, a:hover {
 
 		}
 	}
+
+	/*------------------------
+	Home Page View
+	-------------------------*/
+	#home-page-columns {
+		position: relative;
+	}
+
+	#button-col {
+		display: inline-block;
+		vertical-align: top;
+		width: 75%;
+
+		a {
+			text-decoration: none;
+		}
+	}
+
+	#home-button {
+		display: block;
+		width: 500px;
+		height: 50px;
+		box-shadow: 5px 5px 10px #000;
+		margin: 25px auto;
+	}
+
+	#home-button:hover {
+		background-color: $colorDarkest;
+	}
+
+	#queue-col {
+		display: inline-block;
+		width: 25%;
+		vertical-align: top;
+		background-color: #fff;
+		min-width: 200px;
+
+		h4 {
+			margin: 0;
+			text-align: center;
+			background-color: $colorCallout;
+			color: #fff;
+			border-bottom: 2px solid $colorDarkest;
+		}
+	}
+
+	.home-queue-widget {
+		padding-left: 10px;
+	}
+
+	#widget-delete {
+		float: right;
+	}
+
+
 
