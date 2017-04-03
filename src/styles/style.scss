@@ -81,16 +81,17 @@ p {
 
 .faq-page {
 	color: white;
-	text-align: center;
 }
 
 .etiquette {
 	margin-top: 50px;
+	text-align: center;
 }
 
 .rules {
 	border: 2px solid black;
 	background: $colorCallout;
+	text-align: center;
 }
 
 .rules h4 {
@@ -467,8 +468,7 @@ button:hover, a:hover {
 	#button-col {
 		display: inline-block;
 		vertical-align: top;
-		margin-left: 50%;
-		transform: translate(-50%);
+		width: 75%;
 
 		a {
 			text-decoration: none;
@@ -479,8 +479,8 @@ button:hover, a:hover {
 		display: block;
 		width: 500px;
 		height: 50px;
-		margin: 25px;
 		box-shadow: 5px 5px 10px #000;
+		margin: 25px auto;
 	}
 
 	#home-button:hover {
@@ -488,12 +488,11 @@ button:hover, a:hover {
 	}
 
 	#queue-col {
-		position: absolute;
 		display: inline-block;
-		width: 300px;
+		width: 25%;
 		vertical-align: top;
 		background-color: #fff;
-		right: 0;
+		min-width: 200px;
 
 		h4 {
 			margin: 0;
@@ -502,6 +501,14 @@ button:hover, a:hover {
 			color: #fff;
 			border-bottom: 2px solid $colorDarkest;
 		}
+	}
+
+	.home-queue-widget {
+		padding-left: 10px;
+	}
+
+	#widget-delete {
+		float: right;
 	}
 
 	/*----------
@@ -570,6 +577,4 @@ button:hover, a:hover {
 				text-align: center;
 			}
 		}
-
 	}
-

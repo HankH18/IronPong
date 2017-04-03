@@ -1,7 +1,8 @@
 import React from 'react'
 import ACTIONS from '../../actions'
 import STORE from '../../store.js'
-import User from '../../models/userModel'
+import User from '../../models/userModel.js'
+
 
 var NavBar = React.createClass({
 
@@ -13,6 +14,10 @@ var NavBar = React.createClass({
 
 		})
 
+	},
+
+	componentWillUnmount: function() {
+		STORE.off('dataUpdated')
 	},
 
 	getInitialState: function(){
@@ -30,8 +35,11 @@ var NavBar = React.createClass({
 
 	render: function() {
 		console.log(this.state.userLoginStatus)
+
 		var userId = User.getCurrentUser()
 		console.log('userid', userId)
+		let gamePage = (User.getCurrentUser()) ? <a href="/#create_game">Create New Game</a> : null
+
 		return(
 
 			<div className='nav-bar-wrapper'>
@@ -41,6 +49,7 @@ var NavBar = React.createClass({
 				<a href="/#leaderboard">Leaderboard</a>
 				<a href="/#profile/:id">Profile</a>
 				<a href="/#rules">Rules</a>
+				{gamePage}
 				<a onClick={this.handleLogout}>{this.state.userLoginStatus}</a>
 				
 

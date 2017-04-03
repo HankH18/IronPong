@@ -11,6 +11,7 @@ let Queue = require('../db/schema').Queue
     .get('/users', function(req, res){
       User.find(req.query , "-password", function(err, results){
         if(err) return res.json(err) 
+        console.log(results)
         res.json(results)
       })
     })
