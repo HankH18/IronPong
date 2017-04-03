@@ -10,8 +10,7 @@ export const GameCollection = Backbone.Collection.extend({
 		return new Date(mod.get('createdAt')).getTime()*-1
 	},
 	model: GameModel,
-	urlRoot: 'api/games',
-	idAttribute: '_id'
+	url: 'api/games'
 })
 
 export const QueueCollection = Backbone.Collection.extend({
