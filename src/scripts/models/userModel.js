@@ -2,9 +2,19 @@ import Backbone from 'backbone'
 import $ from 'jquery'
 import {app_name} from '../app'
 
+var logoutUrl = 'https://iron-pong.herokuapp.com/auth/logout'
+var usersUrl = 'https://iron-pong.herokuapp.com/api/users'
+var registerUrl = 'https://iron-pong.herokuapp.com/auth/register'
+var loginUrl = 'https://iron-pong.herokuapp.com/auth/login'
+//var logoutUrl = '/auth/logout'
+//var usersUrl = '/api/users'
+//var registerUrl = '/auth/register'
+//var loginUrl = '/auth/login'
+
 // ..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
 const UserAuthModel = Backbone.Model.extend({
-	url: 'https://iron-pong.herokuapp.com/api/users',
+
+	urlRoot: usersUrl,
 	idAttribute: '_id'
 })
 
@@ -15,7 +25,7 @@ UserAuthModel.register = function(newUserData) {
 	return $.ajax({
 		method: 'POST',
 		type: 'json',
-		url: '/auth/register',
+		url: registerUrl,
 		data: newUserData
 	})
 }
@@ -32,7 +42,7 @@ UserAuthModel.login = function(email, password) {
 	return $.ajax({
 		method: 'POST',
 		type: 'json',
-		url: '/auth/login',
+		url: loginUrl,
 		data: {
 			email: email,
 			password: password
@@ -46,7 +56,7 @@ UserAuthModel.login = function(email, password) {
 }
 
 UserAuthModel.logout = function() {
-	return $.getJSON('/auth/logout').then(()=>{
+	return $.getJSON(logoutUrl).then(()=>{
 		localStorage.removeItem(app_name + '_user')
 	})
 }
@@ -70,7 +80,7 @@ export var UserCollection = Backbone.Collection.extend({
 		return mod.get('winRatio') * -1
 	},
 	model: User,
-	url: '/api/users'
+	url: usersUrl
 })
 
 export default User

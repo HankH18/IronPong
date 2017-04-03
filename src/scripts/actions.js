@@ -35,6 +35,7 @@ const ACTIONS = {
 				function(response){
 					console.log('login success', response)
 					ACTIONS.loggedInStatus()
+					ACTIONS.getUserId()
 					location.hash = 'home'
 				}
 				)
@@ -63,6 +64,7 @@ const ACTIONS = {
 	},
 
 	loggedInStatus: function(){
+
 		console.log(User.getCurrentUser())
 		if(User.getCurrentUser() != null){
 
@@ -79,16 +81,30 @@ const ACTIONS = {
 
 			return 'Log In'
 		}
+		this.getUserId()
 	},
 
-	fetchUsers: function() {
+	fetchUsers: function(id) {
+
 		var userColl = STORE.get('userCollection')
 		userColl.fetch()
 			.then(function() {
+
 				STORE.set({
 					userCollection: userColl
 				})
+	
 			})
+	},
+
+	getUserId: function(){
+
+		if(User.getCurrentUser()){
+			var id = User.getCurrentUser().attributes._id
+			console.log(id)
+			STORE.set({'currentUserId': id})
+		}
+
 	},
 
 	fetchQueue: function(){
@@ -159,6 +175,7 @@ const ACTIONS = {
 		.fail((err)=>{
 			alert(err.responseText)
 		})
+
 	},
 	createNewGame: function(ev) {
 		ev.preventDefault()

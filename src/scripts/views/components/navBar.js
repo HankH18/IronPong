@@ -8,6 +8,7 @@ var NavBar = React.createClass({
 
 	componentWillMount: function(){
 
+		ACTIONS.getUserId()
 		STORE.on('dataUpdated', () => {
 
 			this.setState(STORE.data)
@@ -34,11 +35,16 @@ var NavBar = React.createClass({
 	},
 
 	render: function() {
+
+		//<a href="/#profile/:id">Profile</a>
+		console.log(STORE.data.currentUserId)
+
 		console.log(this.state.userLoginStatus)
 
 		var userId = User.getCurrentUser()
 		console.log('userid', userId)
 		let gamePage = (User.getCurrentUser()) ? <a href="/#create_game">Create New Game</a> : null
+
 
 		return(
 
@@ -47,12 +53,11 @@ var NavBar = React.createClass({
 				<a href="/#home">Home</a>
 				<a href="/#queue">Queue</a>
 				<a href="/#leaderboard">Leaderboard</a>
-				<a href="/#profile/:id">Profile</a>
+				<a href={"/#profile/" + STORE.data.currentUserId}>Profile</a>
 				<a href="/#rules">Rules</a>
 				{gamePage}
 				<a onClick={this.handleLogout}>{this.state.userLoginStatus}</a>
 				
-
 			</div>
 
 		)
